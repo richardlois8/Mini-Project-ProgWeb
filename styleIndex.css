@@ -1,7 +1,4 @@
-/* collor pallete
-- dark blue/grey #659fb8
-- light #cde8f4
-- yellow/teks #ffb41f */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 html,body{
     margin: 0;
@@ -12,7 +9,7 @@ html,body{
 }
 
 .container{
-    padding: 30px 30px;
+    height: 100%;
 }
 
 a{
@@ -21,23 +18,33 @@ a{
 }
 
 header{
+    float: left;
     height: 60px;
     width: 100%;
-    background-color: #659fb8;
-    position: fixed;
-    z-index: 10;
+    background-color: #3f38a3;
+    /* position: fixed;
+    z-index: 10; */
 }
 
 .header-left{
     float: left;
 }
 
-.header-right input[type=text]{
-    float:right;
-    display: block;
-    text-align: left;
-    margin: 10px 15px;
-    padding: 7px;
+.header-right{
+    float: right;
+    margin-right: 10px;
+}
+
+.header-right a{
+    color:white;
+    display: inline-block;
+    text-align: center;
+    padding: 20px;
+    transition: all 0.5s;
+}
+
+.header-right a:hover{
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .logo{
@@ -47,44 +54,66 @@ header{
 }
 
 main{
+    float: left;
     margin: 0;
     height: 100%;
-    background-color:#cde8f4 ;
+    width: 100%;
+    background-color:#e8eff7 ;
 }
 
-.title h1{
+.top-wrapper{
+    color:#e8eff7 ;
+    height: 300px;
+    padding: 20px;
+    background-color: #05d2dd;
+}
+
+.top-left{
+    width: 50%;
+    float: left;
+    margin-left: 10px;
+    font-size: 25px;
+    letter-spacing: 0.03em;
+}
+
+.top-left h2{
+    color: black;
+}
+
+.top-right{
+    margin: 20px 15px 15px 40px;
+    float: left;
+}
+
+.top-right h3{
+    color: black;
+    font-size: 30px;
+}
+
+.search{
+    display: flex;
+}
+
+#search-box{
+    width: 60%;
+    border: 3px solid #00B4CC;
+    border-right: none;
+    padding: 5px;
+    height: 30px;
+    border-radius: 5px 0 0 5px;
+    color: #9DBFAF;
+    margin-left:50px;
+
+}
+
+#search-button {
+    width: 40px;
+    /* height: 48px; */
+    border: 1px solid #00B4CC;
+    background: #3f38a3;
     text-align: center;
-    font-size: 90px;
-    font-family: 'Secular One', sans-serif;
-}
-
-.contents-wrap{
-    padding-top: 15px;
-    float: left;
-}
-
-.contents{
-    float: left;
-}
-
-.left{
-    width: 75%;
-}
-
-.right{
-    width: 25%;
-}
-
-.content h2{
-    font-size: 35px;
-}
-
-.content p{
-    padding-top: 20px;
-}
-
-.img-content{
-    width: 25%;
-    float: left;
-    padding-right: 20px;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
 }
