@@ -1,0 +1,99 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+html,body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* .container{
+    height: 100%;
+    width: 100%;
+} */
+
+a{
+    text-decoration: none;
+    color: #ffb41f;
+}
+
+header{
+    float: left;
+    height: 60px;
+    width: 100%;
+    background-color: #3f38a3;
+    position: fixed;
+    z-index: 10;
+}
+
+.header-left{
+    float: left;
+}
+
+.header-right{
+    float: right;
+    margin-right: 10px;
+}
+
+.header-right a{
+    color:white;
+    display: inline-block;
+    text-align: center;
+    padding: 20px;
+    transition: all 0.5s;
+}
+
+.header-right a:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.logo{
+    height: 60px;
+    padding-left: 10px;
+    padding-bottom: 0;
+}
+
+footer{
+    background-color: black;
+    height: max-content;
+}
+
+footer i{
+    color: white;
+    margin: 0px 15px;
+    margin-top: 30px;
+}
+
+.icon{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.footer-menu{
+    text-align: center;
+}
+
+.footer-menu ul{
+    display: inline-table;
+}
+
+footer li{
+    float: left;
+    margin-right: 30px;
+    display: inline;
+}
+
+.caption-footer{
+    text-align: center;
+    color: black;
+    font-size: smaller;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #e8eff7;
+}
+
+.caption-footer h3,p{
+    margin: 0;
+    padding: 0;
+}
