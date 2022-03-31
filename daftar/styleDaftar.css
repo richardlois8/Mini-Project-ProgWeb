@@ -1,17 +1,13 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@600&family=Poppins&display=swap');
 
 html,body{
     margin: 0;
     padding: 0;
     height: 100vh;
     width: 100%;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* .container{
-    height: 100%;
-    width: 100%;
-} */
 
 a{
     text-decoration: none;
@@ -53,6 +49,17 @@ header{
     padding-left: 10px;
     padding-bottom: 0;
 }
+
+main{
+    background-color:#e8eff7 ;
+    padding: 30px;
+}
+
+main > h2{
+    padding-top: 50px;
+    margin-top: 0;
+}
+
 
 footer{
     background-color: black;

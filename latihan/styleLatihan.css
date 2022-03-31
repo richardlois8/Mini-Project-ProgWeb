@@ -57,106 +57,26 @@ header{
 main{
     float: left;
     margin-top: 30px;
-    /* width: 100%; */
     background-color:#e8eff7 ;
 }
 
-.top-wrapper{
-    color:#e8eff7 ;
-    height: 450px;
-    padding: 20px;
-    background-image: url(images/background-top.png);
-    background-size:cover;
-    /* width: 100%; */
-}
 
-.top-left{
-    width: 50%;
-    float: left;
-    margin: 30px;
-    font-size: 25px;
-    letter-spacing: 0.03em;
-}
-
-.top-left h4{
-    color: black;
-}
-
-.search{
-    display: flex;
-    margin-top: 50px;
-}
-
-#search-box{
-    width: 60%;
-    border: 3px solid #3f38a3;
-    border-right: none;
-    padding: 5px;
-    height: 30px;
-    border-radius: 5px 0 0 5px;
-}
-
-#search-button {
-    width: 40px;
-    border: 1px solid #3f38a3;
-    background: #3f38a3;
-    text-align: center;
-    color: #fff;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    font-size: 20px;
-}
-
-#search-button:active{
-    background-color: rgba(77, 70, 177, 0.911);
-}
-
-.mid-wrapper{
-    /* width: 100%; */
-    height: 250px;
-    text-align: center;
-    padding: 10px 10px 30px 10px;
-    background-color: #3f38a3;
-    color: #ffb41f;
-}
-
-.mid-wrapper h3{
-    font-size: 30px;
-    text-decoration-line: underline;
-    text-underline-offset: 20px;
-    margin-bottom: 0px;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-}
-
-.mid-wrapper h3::before{
-    width: 50%;
-}
-
-.mid-wrapper p{
-    font-size: larger;
-    padding: 0px 10px;
-    color: #e8eff7;
-}
-
-.mid-left, .mid-mid, .mid-right{
-    float: left;
-    width: 30%;
-    height: 200px;
-    margin-top: 20px;
-    margin-left: 20px;
-    display: block;
-    border: 8px solid #4acdee;
-}
 
 .title-workout{
     font-size: 40px;
     text-align: center;
     margin-top: 10px;
+    color: black;
+    margin-bottom: 0px;
 }
 
 .contents-wrap{
     padding: 30px;
+}
+
+.contents-wrap h4{
+    margin-top: 0px;
+    text-align: center;
 }
 
 .contents-wrap img{
@@ -199,17 +119,6 @@ main{
 .wrap-image:hover .img-overlay{
     opacity: 1;
 }
-
-/* .wrap-image img{
-    position: relative;
-    width: 30%;
-    float: left;
-    margin: 20px;
-} */
-
-/* .footer-wrap{
-    background-color:#7a10ff;
-} */
 
 footer{
     background-color: black;
