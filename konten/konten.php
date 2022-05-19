@@ -1,3 +1,17 @@
+<?php  
+require("../functions.php");
+if($_GET){
+    // $allResult = query("SELECT * FROM olahraga WHERE nama_olahraga LIKE '%".$_GET['name']."%'");
+    $allResult = query("SELECT nama_olahraga,video,tingkat_kesulitan,durasi,tipe_olahraga,nama_instruktur,nama_peralatan,deskripsi,step FROM olahraga
+    join kesulitan k on k.id_kesulitan = olahraga.id_kesulitan
+    join tipe_olahraga t on t.id_tipe = olahraga.id_tipe
+    join detail_instruktur di on olahraga.id_olahraga = di.id_olahraga
+    join detail_peralatan dp on olahraga.id_olahraga = dp.id_olahraga
+    join instruktur i on di.id_instruktur = i.id_instruktur
+    join peralatan p on dp.id_alat = p.id_peralatan WHERE olahraga.nama_olahraga LIKE '%".$_GET['name']."%'");
+    $result = $allResult[0];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +29,10 @@
             <img class="logo" src="../images/logo-white.png" alt="logo">
         </div>
         <div class="header-right">
-            <a href="../index.html">Beranda</a>
-            <a href="latihan.html">Latihan</a>
-            <a href="../kontak/kontak.html">Kontak</a>
-            <a href="../daftar/daftar.html">Daftar</a>
+            <a href="../index.php">Beranda</a>
+            <a href="latihan.php">Latihan</a>
+            <a href="../kontak/kontak.php">Kontak</a>
+            <a href="../daftar/daftar.php">Login</a>
         </div>
     </header>
 
@@ -26,35 +40,40 @@
         <section id="workout-sec">
             <div class="top-wrap">
                 <div class="left-content">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/SJ1Xuz9D-ZQ?" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="<?=$result['video']?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="right-content">
                     <div class="detail-content">
-                        <h2>Donkey Kick</h2>
-                        <h3>Level Kesulitan: <span>Intermdiate</span> </h3>
-                        <h3>Durasi: <span>10 menit</span></h3>
-                        <h3>Tipe Olahraga: <span>Yoga</span></h3>
-                        <h3>Instruktur: <span>Dr. Richard</span></h3>
+                        <h2><?= $result["nama_olahraga"]  ?></h2>
+                        <h3>Level Kesulitan: <span><?= $result["tingkat_kesulitan"]  ?></span> </h3>
+                        <h3>Durasi: <span><?=$result["durasi"]." menit" ?></span></h3>
+                        <h3>Tipe Olahraga: <span><?= $result["tipe_olahraga"]  ?></span></h3>
+                        <h3>Instruktur: <span><?= $result["nama_instruktur"]  ?></span></h3>
                         <h3>Alat</h3>
                         <ul>
-                            <li><h3><span>Matras Tipis</span></h3></li>
+                            <li><h3><span><?= $result["nama_peralatan"]  ?></span></h3></li>
                         </ul>
+                        <!-- <ul>
+                            <li><h3><span>Matras Tipis</span></h3></li>
+                        </ul> -->
                     </div>
                 </div>
             </div>
             <div class="bottom-content">
                 <div class="desc">
                     <h2>Deskripsi</h2>
-                    <p>Donkey kicks adalah gerakan yang sangat mudah yang menargetkan tempat di mana bokong dan hamstring kamu bertemu dan membantu kamu mengencangkan otot-otot bokong. Yang lebih menarik adalah bahwa latihan ini juga membantu mengencangkan perut dan memperkuat tulang belakang kamu.</p>
+                    <p><?= $result{"deskripsi"}  ?></p>
+                    <!-- <p>Donkey kicks adalah gerakan yang sangat mudah yang menargetkan tempat di mana bokong dan hamstring kamu bertemu dan membantu kamu mengencangkan otot-otot bokong. Yang lebih menarik adalah bahwa latihan ini juga membantu mengencangkan perut dan memperkuat tulang belakang kamu.</p> -->
                 </div>
                 <div class="step">
                     <h2>Langkah : </h2>
-                    <ol>
+                    <?= $result['step']  ?>
+                    <!-- <ol>
                         <li>Merangkaklah. Dengan telapak tangan diletakkan langsung di bawah bahu dan lutut di bawah pinggul.</li>
                         <li>Pertahankan lutut kanan ditekuk pada 90 derajat, angkat kaki sepenuhnya hingga kamu nyaman.</li>
                         <li>Turunkan lutut Anda tanpa menyentuh lantai, dan angkat lagi. Ulangi 20 kali.</li>
                         <li>Sekarang lakukan hal yang sama dengan kaki kiri kamu.</li>
-                    </ol>
+                    </ol> -->
                 </div>
             </div>
         </section>

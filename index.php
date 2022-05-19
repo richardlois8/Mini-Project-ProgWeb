@@ -1,3 +1,4 @@
+<?php require('functions.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +16,10 @@
             <img class="logo" src="images/logo-white.png" alt="logo">
         </div>
         <div class="header-right">
-            <a href="index.html">Beranda</a>
-            <a href="latihan/latihan.html">Latihan</a>
-            <a href="kontak/kontak.html">Kontak</a>
-            <a href="daftar/daftar.html">Daftar</a>
+            <a href="index.php">Beranda</a>
+            <a href="latihan/latihan.php">Latihan</a>
+            <a href="kontak/kontak.php">Kontak</a>
+            <a href="daftar/daftar.php">Login</a>
         </div>
     </header>
 
@@ -55,55 +56,28 @@
         <div class="contents-wrap">
             <h2 class="title-workout">Choose your workout</h2>
             <table>
-                <tr>
-                    <td>
-                        <div class="wrap-image"> 
-                            <img class="wrap-image" src="images/workout/donkey-kick.png" alt="donkey kick">
-                            <div class="img-overlay"> 
-                                <div class="title">
-                                    <a href="konten/donkeyKick.html"><h3>Donkey Kick</h3></a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                    <td><div class="wrap-image">
-                            <img class="img-content" src="images/workout/push-up.png" alt="push up">
-                            <div class="img-overlay">
-                                <div class="title"><a href="konten/pushUp.html"><h3>Push Up</h3></a></div>
-                            </div>
-                        </div>
-                    </td>
-                    <td><div class="wrap-image">
-                            <img class="img-content" src="images/workout/jumping-jack.png" alt="jumping jack">
-                            <div class="img-overlay">
-                                <div class="title"><a href="konten/donkeyKick.html"><h3>Jumping Jack</h3></a></div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td><div class="wrap-image">
-                            <img class="img-content" src="images/workout/abdominal-crunch.png" alt="crunch">
-                            <div class="img-overlay">
-                                <div class="title"><a href="konten/donkeyKick.html"><h3>Crunch</h3></a></div>
-                            </div>
-                        </div>
-                    </td>
-                    <td><div class="wrap-image">
-                            <img class="img-content" src="images/workout/plank.png" alt="plank">
-                            <div class="img-overlay">
-                                <div class="title"><a href="konten/pushUp.html"><h3>Plank</h3></a></div>
-                            </div>
-                        </div>
-                    </td>
-                    <td><div class="wrap-image">
-                            <img class="img-content" src="images/workout/squat.png" alt="squat">
-                            <div class="img-overlay">
-                                <div class="title"><a href="konten/donkeyKick.html"><h3>Squat</h3></a></div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
+                <?php   $contents = query("SELECT nama_olahraga,image FROM olahraga;");
+                        $column = 1;
+                        foreach($contents as $content){
+                            if($column == 1 || $column == 4){
+                                echo "<tr>";
+                            }
+
+                            echo "<td>";
+                            echo '<div class="wrap-image">';
+                            echo '<img class="img-content" src="images/workout/'.$content['image'].'" alt='.$content['nama_olahraga'].'>';
+                            echo '<div class="img-overlay">';
+                            echo '<div class="title"><a href="konten/konten.php?name='.$content['nama_olahraga'].'"><h3>'.$content['nama_olahraga'].'</h3></a></div>';
+                            echo "</div>";
+                            echo "</div>";
+                            echo "</td>";
+
+                            if($column == 3 || $column == 6){
+                                echo "</tr>";
+                            }
+                            $column += 1;
+                        }
+                ?>
             </table>
         </div>
     </main>
