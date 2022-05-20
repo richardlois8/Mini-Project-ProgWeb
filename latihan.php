@@ -6,20 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latihan</title>
-    <link rel="stylesheet" href="styleLatihan.css">
-    <link rel="shortcut icon" href="../images/logo-title.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/styleLatihan.css">
+    <link rel="shortcut icon" href="images/logo-title.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
         <div class="header-left">
-            <img class="logo" src="../images/logo-white.png" alt="logo">
+            <img class="logo" src="images/logo-white.png" alt="logo">
         </div>
         <div class="header-right">
-            <a href="../index.php">Beranda</a>
+            <a href="index.php">Beranda</a>
             <a href="latihan.php">Latihan</a>
-            <a href="../kontak/kontak.php">Kontak</a>
-            <a href="../daftar/daftar.php">Login</a>
+            <a href="kontak.php">Kontak</a>
+            <a href="daftar.php">Login</a>
         </div>
     </header>
 
@@ -37,9 +37,9 @@
 
                             echo "<td>";
                             echo '<div class="wrap-image">';
-                            echo '<img class="img-content" src="../images/workout/'.$content['image'].'" alt='.$content['nama_olahraga'].'>';
+                            echo '<img class="img-content" src="images/workout/'.$content['image'].'" alt='.$content['nama_olahraga'].'>';
                             echo '<div class="img-overlay">';
-                            echo '<div class="title"><a href="../konten/konten.php?name='.$content['nama_olahraga'].'"><h3>'.$content['nama_olahraga'].'</h3></a></div>';
+                            echo '<div class="title"><a href="konten.php?name='.$content['nama_olahraga'].'"><h3>'.$content['nama_olahraga'].'</h3></a></div>';
                             echo "</div>";
                             echo "</div>";
                             echo "</td>";

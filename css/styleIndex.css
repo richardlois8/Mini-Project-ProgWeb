@@ -65,7 +65,7 @@ main{
     color:#e8eff7 ;
     height: 450px;
     padding: 20px;
-    background-image: url(images/background-top.png);
+    background-image: url(../images/background-top.png);
     background-size:cover;
     /* width: 100%; */
 }

@@ -1,5 +1,5 @@
 <?php  
-require("../functions.php");
+require("functions.php");
 if($_GET){
     // $allResult = query("SELECT * FROM olahraga WHERE nama_olahraga LIKE '%".$_GET['name']."%'");
     $allResult = query("SELECT nama_olahraga,video,tingkat_kesulitan,durasi,tipe_olahraga,nama_instruktur,nama_peralatan,deskripsi,step FROM olahraga
@@ -19,20 +19,20 @@ if($_GET){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donkey Kick</title>
-    <link rel="stylesheet" href="styleDonkey.css">
-    <link rel="shortcut icon" href="../images/logo-title.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/styleKonten.css">
+    <link rel="shortcut icon" href="images/logo-title.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
         <div class="header-left">
-            <img class="logo" src="../images/logo-white.png" alt="logo">
+            <img class="logo" src="images/logo-white.png" alt="logo">
         </div>
         <div class="header-right">
-            <a href="../index.php">Beranda</a>
+            <a href="index.php">Beranda</a>
             <a href="latihan.php">Latihan</a>
-            <a href="../kontak/kontak.php">Kontak</a>
-            <a href="../daftar/daftar.php">Login</a>
+            <a href="kontak.php">Kontak</a>
+            <a href="daftar.php">Login</a>
         </div>
     </header>
 

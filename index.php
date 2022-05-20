@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sehat Dulu</title>
-    <link rel="stylesheet" href="styleIndex.css">
+    <link rel="stylesheet" href="css/styleIndex.css">
     <link rel="shortcut icon" href="images/logo-title.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
@@ -17,9 +17,9 @@
         </div>
         <div class="header-right">
             <a href="index.php">Beranda</a>
-            <a href="latihan/latihan.php">Latihan</a>
-            <a href="kontak/kontak.php">Kontak</a>
-            <a href="daftar/daftar.php">Login</a>
+            <a href="latihan.php">Latihan</a>
+            <a href="kontak.php">Kontak</a>
+            <a href="daftar.php">Login</a>
         </div>
     </header>
 
@@ -67,7 +67,7 @@
                             echo '<div class="wrap-image">';
                             echo '<img class="img-content" src="images/workout/'.$content['image'].'" alt='.$content['nama_olahraga'].'>';
                             echo '<div class="img-overlay">';
-                            echo '<div class="title"><a href="konten/konten.php?name='.$content['nama_olahraga'].'"><h3>'.$content['nama_olahraga'].'</h3></a></div>';
+                            echo '<div class="title"><a href="konten.php?name='.$content['nama_olahraga'].'"><h3>'.$content['nama_olahraga'].'</h3></a></div>';
                             echo "</div>";
                             echo "</div>";
                             echo "</td>";

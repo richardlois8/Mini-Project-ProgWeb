@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
-    <link rel="stylesheet" href="styleDaftar.css">
-    <link rel="shortcut icon" href="../images/logo-title.png" type="image/x-icon">
+    <title>Kontak</title>
+    <link rel="stylesheet" href="css/styleKontak.css">
+    <link rel="shortcut icon" href="images/logo-title.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -15,23 +15,30 @@
             <img class="logo" src="../images/logo-white.png" alt="logo">
         </div>
         <div class="header-right">
-            <a href="../index.php">Beranda</a>
-            <a href="../latihan/latihan.php">Latihan</a>
-            <a href="../kontak/kontak.php">Kontak</a>
-            <a href="daftar.html">Login</a>
+            <a href="index.php">Beranda</a>
+            <a href="latihan.php">Latihan</a>
+            <a href="kontak.php">Kontak</a>
+            <a href="daftar.php">Login</a>
         </div>
     </header>
 
     <main>
-        <h2>Selamat Datang</h2>
-        <!-- <h4>Hidup sehat bersama Sehat Dulu</h4> -->
-        <form action="" method="POST">
-            <label for="username">Username :</label><br>
-            <input type="text" id="username" name="username"><br>
-            <label for="password">Password :</label><br>
-            <input type="text" id="password" name="password">
-        </form>
-        <button type="submit" value="submit">Login</button>
+        <h1>Contact us at</h1>
+        <div class="img-wrap">
+            <img src="../images/contact/wa.png" alt="WhatsApp">
+            <img src="../images/contact/ig.png" alt="Instagram">
+            <img src="../images/contact/yt.png" alt="YouTube">
+        </div>
+        <div class="detail-contact">
+            <span>085611771012</span>
+            <span>SehatDulu_Ind</span>
+            <span>Sehat Dulu Ind</span>
+        </div>
+        <div class="office">
+            <img src="../images/contact/office.png" alt="">
+            <h2>GYM Address</h2>
+            <h3>Jl. Menteng No. 10 Ruko Menteng Square A10</h3>
+        </div>
     </main>
 
     <footer>
