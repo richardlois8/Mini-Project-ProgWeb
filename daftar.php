@@ -12,7 +12,7 @@
 <body>
     <header>
         <div class="header-left">
-            <img class="logo" src="../images/logo-white.png" alt="logo">
+            <img class="logo" src="images/logo-white.png" alt="logo">
         </div>
         <div class="header-right">
             <a href="index.php">Beranda</a>
@@ -25,13 +25,13 @@
     <main>
         <h2>Selamat Datang</h2>
         <!-- <h4>Hidup sehat bersama Sehat Dulu</h4> -->
-        <form action="" method="POST">
+        <form action="daftar.php" method="POST">
             <label for="username">Username :</label><br>
             <input type="text" id="username" name="username"><br>
             <label for="password">Password :</label><br>
             <input type="text" id="password" name="password">
+            <button type="submit" value="submit">Login</button>
         </form>
-        <button type="submit" value="submit">Login</button>
     </main>
 
     <footer>

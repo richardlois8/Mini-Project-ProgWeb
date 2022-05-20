@@ -12,7 +12,7 @@
 <body>
     <header>
         <div class="header-left">
-            <img class="logo" src="../images/logo-white.png" alt="logo">
+            <img class="logo" src="images/logo-white.png" alt="logo">
         </div>
         <div class="header-right">
             <a href="index.php">Beranda</a>
@@ -25,9 +25,9 @@
     <main>
         <h1>Contact us at</h1>
         <div class="img-wrap">
-            <img src="../images/contact/wa.png" alt="WhatsApp">
-            <img src="../images/contact/ig.png" alt="Instagram">
-            <img src="../images/contact/yt.png" alt="YouTube">
+            <img src="images/contact/wa.png" alt="WhatsApp">
+            <img src="images/contact/ig.png" alt="Instagram">
+            <img src="images/contact/yt.png" alt="YouTube">
         </div>
         <div class="detail-contact">
             <span>085611771012</span>
@@ -35,7 +35,7 @@
             <span>Sehat Dulu Ind</span>
         </div>
         <div class="office">
-            <img src="../images/contact/office.png" alt="">
+            <img src="images/contact/office.png" alt="">
             <h2>GYM Address</h2>
             <h3>Jl. Menteng No. 10 Ruko Menteng Square A10</h3>
         </div>

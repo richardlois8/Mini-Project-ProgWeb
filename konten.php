@@ -62,7 +62,7 @@ if($_GET){
             <div class="bottom-content">
                 <div class="desc">
                     <h2>Deskripsi</h2>
-                    <p><?= $result{"deskripsi"}  ?></p>
+                    <p><?= $result["deskripsi"]  ?></p>
                     <!-- <p>Donkey kicks adalah gerakan yang sangat mudah yang menargetkan tempat di mana bokong dan hamstring kamu bertemu dan membantu kamu mengencangkan otot-otot bokong. Yang lebih menarik adalah bahwa latihan ini juga membantu mengencangkan perut dan memperkuat tulang belakang kamu.</p> -->
                 </div>
                 <div class="step">

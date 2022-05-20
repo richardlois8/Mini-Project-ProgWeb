@@ -1,4 +1,6 @@
-<?php require('functions.php'); ?>
+<?php 
+    require('functions.php'); // connect database
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,12 +32,15 @@
                 <h2>Dapatkan tubuh ideal <br>Dimulai dari rutinitas<br>Mudah dilakukan dari rumah Anda</h2>
                 <h4>Punya tubuh ideal bukan lagi sebuah Impian!<br>Mulailah bentuk tubuh Anda hari ini</h4>
                 <!-- <h3>Cari latihan yang cocok untuk Anda</h3> -->
+                
+                <!-- bikin form buat search -->
                 <div class="search">
                     <input id="search-box" type="text" placeholder="Cari Latihan">
                     <button type="submit" id="search-button">
                         <i class="fa fa-search"></i>
                     </button>
                 </div>
+
             </div>
         </div>
         
