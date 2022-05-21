@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latihan</title>
+    <title>Sehat Dulu | Latihan</title>
     <link rel="stylesheet" href="css/styleLatihan.css">
     <link rel="shortcut icon" href="images/logo-title.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -28,28 +28,29 @@
             <h2 class="title-workout">Let's Go Workout!</h2>
             <h4>Choose your favorite workout</h4>
             <table>
-            <?php   $contents = query("SELECT nama_olahraga,image FROM olahraga;");
-                        $column = 1;
-                        foreach($contents as $content){
-                            if($column == 1 || $column == 4){
-                                echo "<tr>";
-                            }
+            <?php   
+                $contents = query("SELECT nama_olahraga,image FROM olahraga;");
+                $column = 1;
+                foreach($contents as $content){
+                    if($column == 1 || $column == 4){
+                        echo "<tr>";
+                    }
 
-                            echo "<td>";
-                            echo '<div class="wrap-image">';
-                            echo '<img class="img-content" src="images/workout/'.$content['image'].'" alt='.$content['nama_olahraga'].'>';
-                            echo '<div class="img-overlay">';
-                            echo '<div class="title"><a href="konten.php?name='.$content['nama_olahraga'].'"><h3>'.$content['nama_olahraga'].'</h3></a></div>';
-                            echo "</div>";
-                            echo "</div>";
-                            echo "</td>";
+                    echo "<td>";
+                    echo '<div class="wrap-image">';
+                    echo '<img class="img-content" src="images/workout/'.$content['image'].'" alt='.$content['nama_olahraga'].'>';
+                    echo '<div class="img-overlay">';
+                    echo '<div class="title"><a href="konten.php?name='.$content['nama_olahraga'].'"><h3>'.$content['nama_olahraga'].'</h3></a></div>';
+                    echo "</div>";
+                    echo "</div>";
+                    echo "</td>";
 
-                            if($column == 3 || $column == 6){
-                                echo "</tr>";
-                            }
-                            $column += 1;
-                        }
-                ?>
+                    if($column == 3 || $column == 6){
+                        echo "</tr>";
+                    }
+                    $column += 1;
+                }
+            ?>
             </table>
         </div>
     </main>

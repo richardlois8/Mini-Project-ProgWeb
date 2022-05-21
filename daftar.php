@@ -1,10 +1,27 @@
+<?php
+    require('functions.php');
+    if(isset($_POST["submit"])){
+        $username = $_POST['username'];
+        $password = $_POST["password"];
+        $sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password' LIMIT 1;";
+        $result = query($sql);
+        
+        if($result[0]['username'] == "admin" && $result[0]['password']){
+            session_start();
+            $_SESSION['userLogin'] = "true";
+            header("Location: crud.php");
+        }else{
+            echo "Password atau Username salah";
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <title>Sehat Dulu | Login</title>
     <link rel="stylesheet" href="css/styleDaftar.css">
     <link rel="shortcut icon" href="../images/logo-title.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -30,7 +47,7 @@
             <input type="text" id="username" name="username"><br>
             <label for="password">Password :</label><br>
             <input type="text" id="password" name="password">
-            <button type="submit" value="submit">Login</button>
+            <button type="submit" value="submit" name = "submit">Login</button>
         </form>
     </main>
 
