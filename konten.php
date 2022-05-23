@@ -32,7 +32,7 @@ if($_GET){
             <a href="index.php">Beranda</a>
             <a href="latihan.php">Latihan</a>
             <a href="kontak.php">Kontak</a>
-            <a href="daftar.php">Login</a>
+            <a href="login.php">Login</a>
         </div>
     </header>
 

@@ -1,5 +1,11 @@
 <?php
     require('functions.php');
+    session_start();
+
+    if($_SESSION['userLogin'] =="true"){
+        header("location:crud.php");
+    }
+
     if(isset($_POST["submit"])){
         $username = $_POST['username'];
         $password = $_POST["password"];
@@ -7,7 +13,6 @@
         $result = query($sql);
         
         if($result[0]['username'] == "admin" && $result[0]['password']){
-            session_start();
             $_SESSION['userLogin'] = "true";
             header("Location: crud.php");
         }else{
@@ -35,18 +40,18 @@
             <a href="index.php">Beranda</a>
             <a href="latihan.php">Latihan</a>
             <a href="kontak.php">Kontak</a>
-            <a href="daftar.php">Login</a>
+            <a href="login.php">Login</a>
         </div>
     </header>
 
     <main>
         <h2>Selamat Datang</h2>
         <!-- <h4>Hidup sehat bersama Sehat Dulu</h4> -->
-        <form action="daftar.php" method="POST">
+        <form action="login.php" method="POST">
             <label for="username">Username :</label><br>
             <input type="text" id="username" name="username"><br>
             <label for="password">Password :</label><br>
-            <input type="text" id="password" name="password">
+            <input type="password" id="password" name="password">
             <button type="submit" value="submit" name = "submit">Login</button>
         </form>
     </main>
