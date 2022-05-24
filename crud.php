@@ -28,13 +28,13 @@
             <a href="index.php">Beranda</a>
             <a href="latihan.php">Latihan</a>
             <a href="kontak.php">Kontak</a>
-            <a href="login.php">Login</a>
+            <a href="index.php">Logout</a>
         </div>
     </header>
 
     <main>
         <h2>
-            <a href="">+ Add Record</a>
+            <a href="add.php">+ Add Record</a>
         </h2>
 
         <table>
@@ -60,14 +60,14 @@
                     }
 
                     echo "<td>";
-                    echo "<a href=''>Edit</a>";
+                    echo "<a href='edit.php?id=".$result[$i]['id_olahraga']."'>Edit</a>";
                     echo "</td>";
 
                     echo "<td>";
-                    echo "<a href=''>Delete</a>";
+                    echo "<a href='delete.php?id=".$result[$i]['id_olahraga']."'>Delete</a>";
                     echo "</td>";
+                    echo "</tr>";
                 }
-                echo "</tr>";
             ?>
         </table>
     </main>

@@ -2,8 +2,10 @@
     require('functions.php');
     session_start();
 
-    if($_SESSION['userLogin'] =="true"){
-        header("location:crud.php");
+    if(isset($_SESSION['userLogin'])){
+        if($_SESSION['userLogin'] == "true"){
+            header("location:crud.php");
+        }
     }
 
     if(isset($_POST["submit"])){
