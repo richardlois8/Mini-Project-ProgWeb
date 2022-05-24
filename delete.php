@@ -7,12 +7,14 @@
     // }
 ?>
 
+
 <?php
     require('functions.php');
     $id = $_GET['id'];
-    $sql = "DELETE FROM olahraga WHERE id='$id'";
+    $sql = "DELETE FROM olahraga WHERE id_olahraga='$id'";
     if(mysqli_query($conn,$sql)){
-        echo "Berhasil menghapus sebnayak".mysqli_affected_rows($conn);
+        echo "<a href='crud.php'>Kembali</a>";
+        echo "<script>alert(Berhasil menghapus sebanyak ".mysqli_affected_rows($conn).")</script>;";
     }else{
         echo "Gagal menghapus data";
     }

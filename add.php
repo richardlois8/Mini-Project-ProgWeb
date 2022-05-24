@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="styleAdd.css">
 </head>
 <body>
-    <form action="add.php" method="post">
+    <form action="add.php" method="post" enctype="multipart/form-data">
         Nama Olahraga <input type="text" name="nama_olahraga"><br>
 
         Durasi <input type="text" name="durasi"><br>
@@ -62,3 +62,38 @@
     </form>
 </body>
 </html>
+
+<?php
+
+
+    if(isset($_POST['submit'])){
+        $olahraga = $_POST['nama_olahraga'];
+        $durasi = $_POST['durasi'];
+        $desc = $_POST['deskripsi'];
+        $vid = $_POST['video'];
+        $tipe = $_POST['comboTipe'];
+        $kesulitan = $_POST['comboKesulitan'];
+        $gambar = "";
+        $step = $_POST['step'];
+
+        if(isset($_FILES["gambar"]["name"])){
+            $ekstensi = explode(".",$_FILES["gambar"]["name"]);
+            $gambar = $olahraga . "." . $ekstensi[1];
+            
+            $uploadfile = "images/workout/" . $gambar;
+            if(move_uploaded_file($_FILES["gambar"]["tmp_name"], $uploadfile)){
+                echo "Sukses mengupload foto<br>";
+            }else{
+                echo "Gagal mengupload foto<br>";
+            }
+        }
+
+        $sql = "INSERT INTO olahraga VALUES ('','$olahraga',$durasi,'$desc','$vid',$tipe,$kesulitan,'$gambar','$step')";
+        
+        if(mysqli_query($conn,$sql)){
+            echo "Berhasil menambahkan data<br>";
+        }else{
+            echo "Gagal menambahkan data<br>";
+        }
+    }
+?>

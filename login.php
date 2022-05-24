@@ -8,20 +8,23 @@
         }
     }
 
-    if(isset($_POST["submit"])){
-        $username = $_POST['username'];
-        $password = $_POST["password"];
-        $sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password' LIMIT 1;";
-        $result = query($sql);
+    // if(isset($_POST["submit"])){
+    //     $username = $_POST['username'];
+    //     $password = $_POST["password"];
+    //     $sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password' LIMIT 1;";
+    //     $result = query($sql);
         
-        if($result[0]['username'] == "admin" && $result[0]['password']){
-            $_SESSION['userLogin'] = "true";
-            header("Location: crud.php");
-        }else{
-            echo "Password atau Username salah";
-        }
-    }
+    //     if(count($result) > 0){
+    //         if($result[0]['username'] == "admin" && $result[0]['password'] == "admin"){
+    //             $_SESSION['userLogin'] = "true";
+    //             header("Location: crud.php");
+    //         }
+    //     }else{
+    //         echo "<script>alert('Username atau Password salah');</script>";
+    //     }
+    // }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +57,7 @@
             <input type="text" id="username" name="username"><br>
             <label for="password">Password :</label><br>
             <input type="password" id="password" name="password">
-            <button type="submit" value="submit" name = "submit">Login</button>
+            <button type="submit" value="submit" name ="submit" id="submit">Login</button>
         </form>
     </main>
 
@@ -80,3 +83,23 @@
     </footer>
 </body>
 </html>
+
+<?php
+    if(isset($_POST["submit"])){
+        $username = $_POST['username'];
+        $password = $_POST["password"];
+        $sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password' LIMIT 1;";
+        $result = query($sql);
+
+        if($username == "" || $password == ""){
+            echo "<script>alert('Username atau Password kosong');</script>";
+        }elseif(count($result) > 0){
+            if($result[0]['username'] == "admin" && $result[0]['password'] == "admin"){
+                $_SESSION['userLogin'] = "true";
+                header("Location: crud.php");
+            }
+        }else{
+            echo "<script>alert('Username atau Password salah');</script>";
+        }
+    }
+?>
