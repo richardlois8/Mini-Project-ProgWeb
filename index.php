@@ -35,8 +35,17 @@
                 
                 <!-- bikin form buat search -->
                 <div class="search">
-                    <input id="search-box" type="text" placeholder="Cari Latihan">
-                    <button type="submit" id="search-button">
+                    <form action="index.php" method="post">
+                    <input id="search-box" type="text" placeholder="Cari Latihan" autocomplete="off" name="keyword">
+                    <button type="search" id="search-button" name="search">
+                    <?php
+                    $contents = query("SELECT nama_olahraga,image FROM olahraga");
+                    if(isset($_POST["search"])){
+                        $contents = cari($_POST["keyword"]);
+
+                    }
+                    ?>
+                    </form>
                         <i class="fa fa-search"></i>
                     </button>
                 </div>
@@ -62,8 +71,7 @@
         <div class="contents-wrap">
             <h2 class="title-workout">Choose your workout</h2>
             <table>
-                <?php   
-                    $contents = query("SELECT nama_olahraga,image FROM olahraga;");
+                <?php  
                     $column = 1;
                     foreach($contents as $content){
                         if($column == 1 || $column == 4){
