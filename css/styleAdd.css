@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@600&family=Poppins&display=swap');
+
+html,body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: #ffb41f;
+}
+
+header{
+    float: left;
+    height: 60px;
+    width: 100%;
+    background-color: #3f38a3;
+    position: fixed;
+    z-index: 10;
+}
+
+.header-left{
+    float: left;
+}
+
+.header-right{
+    float: right;
+    margin-right: 10px;
+}
+
+.header-right a{
+    color:white;
+    display: inline-block;
+    text-align: center;
+    padding: 18px 20px;
+    transition: all 0.5s;
+}
+
+.header-right a:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.logo{
+    height: 60px;
+    padding-left: 10px;
+    padding-bottom: 0;
+}
+
+/* Khusus Add.php */
+.form-wrapper{
+    padding-top: 80px;
+}
+
+tr:nth-child(9){
+    text-align: right;
+}
+
+table{
+    margin: auto;
+    width: 31.3%;
+}
+
+.form-textarea{
+    resize: none;
+    width: 300px;
+    height: 150px;
+}
+
+.form-text{
+    width: 300px;
+}
+
+table td{
+    padding: 8px;
+}

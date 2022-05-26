@@ -15,51 +15,86 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styleAdd.css">
+    <link rel="stylesheet" href="css/styleAdd.css">
 </head>
 <body>
-    <form action="add.php" method="post" enctype="multipart/form-data">
-        Nama Olahraga <input type="text" name="nama_olahraga"><br>
+    <header>
+        <div class="header-left">
+            <img class="logo" src="images/logo-white.png" alt="logo">
+        </div>
+        <div class="header-right">
+            <a href="index.php">Beranda</a>
+            <a href="latihan.php">Latihan</a>
+            <a href="kontak.php">Kontak</a>
+            <a href="index.php">Logout</a>
+        </div>
+    </header>
+    <table>
+        <div class="form-wrapper">
+            <form action="add.php" method="post" enctype="multipart/form-data">
+                <tr>
+                    <td>Nama Olahraga </td>
+                    <td><input type="text" name="nama_olahraga" class="form-text"></td>
+                </tr>
+                <tr>
+                    <td>Durasi</td>
+                    <td><input type="text" name="durasi" class="form-text"></td>
+                </tr>
+                <tr>
+                    <td>Deskripsi</td>
+                    <td><textarea name="deskripsi" class="form-textarea"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Link Video</td>
+                    <td><input type="text" name="video" class="form-text"></td>
+                </tr>
+                <tr>
+                    <td>Tipe Olahraga</td>
+                    <td>
+                        <select name="comboTipe">
+                        <option value="">Pilih Tipe Olahraga</option>
+                            <?php
+                                $query = "SELECT * FROM tipe_olahraga ORDER BY tipe_olahraga ASC";
+                                $result = mysqli_query($conn,$query);
+                                while($row = mysqli_fetch_assoc($result)){
+                                    echo "<option value = '". $row['id_tipe']. "'>". $row['tipe_olahraga']. "</option>";
+                                }
+                            ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tipe Kesulitan</td>
+                    <td>
+                        <select name="comboKesulitan">
+                        <option value="">Pilih Tingkat Kesulitan</option>
+                            <?php
+                                $query = "SELECT * FROM kesulitan";
+                                $result = mysqli_query($conn,$query);
+                                while($row = mysqli_fetch_assoc($result)){
+                                    echo "<option value = '". $row['id_kesulitan']. "'>". $row['tingkat_kesulitan']. "</option>";
+                                }
+                            ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gambar</td>
+                    <td><input type="file" name="gambar"></td>
+                </tr>
+                
+                <tr>
+                    <td>Langkah</td>
+                    <td><textarea name="step" class="form-textarea"></textarea></td>
+                </tr>
+                <tr>
+                    <td><a href="crud.php"><< Back</a></td>
+                    <td><input type="submit" name = "submit" value="Submit"></td>
+                </tr>
+            </form>
+        </div>
+    </table>
 
-        Durasi <input type="text" name="durasi"><br>
-
-        Deskripsi <br><textarea name="deskripsi"></textarea><br>
-
-        Link Video <input type="text" name="video"><br>
-
-        Tipe Olahraga<br>
-        <select name="comboTipe">
-        <option value="">Pilih Tipe Olahraga</option>
-        <?php
-            $query = "SELECT * FROM tipe_olahraga ORDER BY tipe_olahraga ASC";
-            $result = mysqli_query($conn,$query);
-            while($row = mysqli_fetch_assoc($result)){
-                echo "<option value = '". $row['id_tipe']. "'>". $row['tipe_olahraga']. "</option>";
-            }
-        ?>
-        </select>
-        <br>
-
-        Tipe Kesulitan<br>
-        <select name="comboKesulitan">
-        <option value="">Pilih Tingkat Kesulitan</option>
-        <?php
-            $query = "SELECT * FROM kesulitan";
-            $result = mysqli_query($conn,$query);
-            while($row = mysqli_fetch_assoc($result)){
-                echo "<option value = '". $row['id_kesulitan']. "'>". $row['tingkat_kesulitan']. "</option>";
-            }
-        ?>
-        </select>
-        <br>
-
-        Gambar<br>
-        <input type="file" name="gambar"><br>
-
-        Langkah <br><textarea name="step"></textarea><br>
-
-        <input type="submit" name = "submit" value="Submit">
-    </form>
 </body>
 </html>
 
