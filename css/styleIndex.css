@@ -88,7 +88,7 @@ main{
 }
 
 #search-box{
-    width: 60%;
+    /* width: 60%; */
     border: 3px solid #3f38a3;
     border-right: none;
     padding: 5px;
@@ -98,6 +98,8 @@ main{
 
 #search-button {
     width: 40px;
+    padding: 7px 0px 13px 0px;
+    margin-left: -8px;
     border: 1px solid #3f38a3;
     background: #3f38a3;
     text-align: center;
@@ -161,14 +163,17 @@ main{
 
 .contents-wrap img{
     /* position: relative; */
-    width: 75%;
+    /* width: 75%; */
+    width: 400px;
+    margin-left: 55px;
     display: block;
-    margin: auto;
+    /* margin: auto; */
     margin-bottom: 40px;
 }
 
 .wrap-image{
     position: relative;
+    margin-left:5px;
 }
 
 .img-overlay{
@@ -178,7 +183,8 @@ main{
     right: 0;
     bottom: 0;
     opacity: 0;
-    width: 75%;
+    /* width: 75%; */
+    width: 400px;
     transition: opacity 0.4s ease-in-out;
     background-color: rgba(63, 56, 163, 0.8);
     cursor: pointer;

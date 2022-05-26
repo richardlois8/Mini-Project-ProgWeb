@@ -10,7 +10,7 @@
     <title>Sehat Dulu | Beranda</title>
     <link rel="stylesheet" type="text/css" href="css/styleIndex.css?<?php echo time(); ?>">
     <link rel="shortcut icon" href="images/logo-title.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/fontawesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/js" src=""></script>
 </head>
 <body>
