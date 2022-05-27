@@ -71,6 +71,5 @@
             ?>
         </table>
     </main>
-    
 </body>
 </html>

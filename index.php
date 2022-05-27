@@ -36,15 +36,8 @@
                 <!-- bikin form buat search -->
                 <div class="search">
                     <form action="index.php" method="post">
-                    <input id="search-box" type="text" placeholder="Cari Latihan" autocomplete="off" name="keyword">
-                    <button type="search" id="search-button" name="search">
-                    <?php
-                    $contents = query("SELECT nama_olahraga,image FROM olahraga");
-                    if(isset($_POST["search"])){
-                        $contents = cari($_POST["keyword"]);
-
-                    }
-                    ?>
+                        <input id="search-box" type="text" placeholder="Cari Latihan" autocomplete="off" name="keyword">
+                        <button type="search" id="search-button" name="search">
                     </form>
                         <i class="fa fa-search"></i>
                     </button>
@@ -68,29 +61,45 @@
             </div>
         </div>
         
-        <div class="contents-wrap">
+        <div class="contents-wrap" id="result">
             <h2 class="title-workout">Choose your workout</h2>
             <table>
                 <?php  
-                    $column = 1;
-                    foreach($contents as $content){
-                        if($column == 1 || $column == 4){
+                    $contents = query("SELECT nama_olahraga,image FROM olahraga");
+
+                    if(isset($_POST["search"]) && $_POST["keyword"] != ""){
+                        $contents = cari($_POST["keyword"]);
+                        foreach($contents as $content){
                             echo "<tr>";
-                        }
-
-                        echo "<td>";
-                        echo '<div class="wrap-image">';
-                        echo '<img class="img-content" src="images/workout/'.$content['image'].'" alt='.$content['nama_olahraga'].'>';
-                        echo '<div class="img-overlay">';
-                        echo '<div class="title"><a href="konten.php?name='.$content['nama_olahraga'].'"><h3>'.$content['nama_olahraga'].'</h3></a></div>';
-                        echo "</div>";
-                        echo "</div>";
-                        echo "</td>";
-
-                        if($column == 3 || $column == 6){
+                            echo '<div class="search-content">';
+                            echo '<img class="img-content-search" src="images/workout/'.$content['image'].'" alt='.$content['nama_olahraga'].'>';
+                            echo '<h2><a href="konten.php?name='.$content['nama_olahraga'].'">'.$content['nama_olahraga'].'</a></h2>';
+                            echo '<p>'.$content['deskripsi'].'</p>';
+                            echo "</div>";
                             echo "</tr>";
                         }
-                        $column += 1;
+                    }
+                    else{
+                        $column = 1;
+                        foreach($contents as $content){
+                            if($column == 1 || $column == 4){
+                                echo "<tr>";
+                            }
+
+                            echo "<td>";
+                            echo '<div class="wrap-image">';
+                            echo '<img class="img-content" src="images/workout/'.$content['image'].'" alt='.$content['nama_olahraga'].'>';
+                            echo '<div class="img-overlay">';
+                            echo '<div class="title"><a href="konten.php?name='.$content['nama_olahraga'].'"><h3>'.$content['nama_olahraga'].'</h3></a></div>';
+                            echo "</div>";
+                            echo "</div>";
+                            echo "</td>";
+
+                            if($column == 3 || $column == 6){
+                                echo "</tr>";
+                            }
+                            $column += 1;
+                        }
                     }
                 ?>
             </table>
@@ -118,4 +127,5 @@
         </div>
     </footer>
 </body>
+<script src="js/index.js"></script>
 </html>

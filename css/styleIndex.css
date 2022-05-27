@@ -179,7 +179,7 @@ main{
 .img-overlay{
     position: absolute;
     top: 0;
-    left:12.5%;
+    left:12%;
     right: 0;
     bottom: 0;
     opacity: 0;
@@ -204,6 +204,38 @@ main{
 
 .wrap-image:hover .img-overlay{
     opacity: 1;
+}
+
+/* KHUSUS KETIKA SEARCH */
+.search-content{
+    background-color: #C4DDFF;
+    width: 80%;
+    height: 300px;
+    padding: 30px 0px 30px 0px;
+    margin: auto;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+.search-content img{
+    width: 300px;
+    margin: 0px 0px 0px 40px;
+    border-radius: 50%;
+    display: inline;
+    float: left;
+}
+
+.search-content h2 a{
+    margin: 20px 0px 0px 60px;
+    color: #001D6E;
+    font-size: 60px;
+}
+
+.search-content p{
+    font-size: 20px;
+    font-weight: 200;
+    text-align: justify;
+    margin: 10px 50px 0px 400px;
 }
 
 /* .wrap-image img{
