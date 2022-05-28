@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2022 at 07:44 AM
+-- Generation Time: May 28, 2022 at 08:04 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -43,7 +43,8 @@ INSERT INTO `detail_peralatan` (`id_det_alat`, `id_olahraga`, `id_alat`) VALUES
 (3, 3, 2),
 (4, 4, 1),
 (5, 5, 1),
-(6, 6, 2);
+(6, 6, 2),
+(7, 19, 1);
 
 -- --------------------------------------------------------
 
@@ -115,7 +116,7 @@ INSERT INTO `olahraga` (`id_olahraga`, `nama_olahraga`, `durasi`, `deskripsi`, `
 (4, 'Crunch', 15, 'Abdominal crunch adalah latihan yang baik untuk membangun otot perut yang kuat. Jika Anda melakukan gerakan ini dengan benar dan teratur, crunch juga bisa membantu untuk memberantas lemak perut dan meningkatkan keseimbangan tubuh.', 'https://www.youtube.com/embed/_YVhhXc2pSY', 1, 3, 'abdominal-crunch.png', '1. Berbaring telentang dengan menekuk lutut dan kaki lurus berbentuk 90 derajat.\n2. Letakkan tangan pada bagian belakang kepala dan jangan mengunci jari-jari tangan Anda atau mendorong kepala ke atas.\n3. Dorong punggung Anda ke lantai untuk melibatkan otot perut.\n4. Geser dagu sedikit sehingga meninggalkan sedikit ruang antara dagu dan dada.\n5. Mulai angkat bahu Anda sekitar 10 cm dari lantai dan tetap menyimpan punggung bagian bawah pada permukaan lantai lantai.\n6. Tahan sejenak posisi tubuh saat berada di atas lalu perlahan-lahan kembali ke bawah.', 1),
 (5, 'Push Up', 15, 'Latihan push up memiliki manfaat untuk mengencangkan otot lengan, dada, trisep, dan bagian depan bahu Anda\r\n', 'https://www.youtube.com/embed/_l3ySVKYVJ8', 1, 2, 'push-up.png', '1. Mulai dengan posisi tengkurap di lantai dengan tangan sedikit lebih lebar, namun tetap segaris dengan bahu. Pastikan juga menjaga jarak kaki agar selalu berdekatan.\n2. Angkat tubuh dengan lengan dan biarkan berat badan ditopang oleh tangan dan pangkal jari kaki. Jika belum terbiasa, Anda juga bisa menggunakan lutut sebagai tumpuan.\n3. Tahan perut sekencang mungkin dan pastikan kondisi tubuh membentuk garis lurus dari bagian bahu hingga pergelangan kaki.\n4. Turunkan tubuh Anda secara perlahan hingga dada hampir menyentuh lantai. Pastikan siku terselip di dekat batang tubuh.\n5. Berhenti sejenak lalu dorong kembali dengan kedua telapak tangan untuk kembali ke posisi awal. Lakukan gerakan ini selama 30 detik sesuai kemampuan tubuh Anda.', 3),
 (6, 'Jumping Jack', 10, 'Jumping jacks atau star jump baik untuk melatih kardiovaskular dan kekuatan tubuh. Gerakan mengayunkan tangan ke atas kepala dan merentangkan kaki ini bisa meningkatkan detak jantung dan merangsang aliran darah ke seluruh tubuh.', 'https://www.youtube.com/embed/1b98WrRrmUs', 1, 1, 'jumping-jack.png', '1. Berdiri tegak lurus dengan kaki menempel dan rapatkan tangan ke bawah pada sisi kanan dan kiri tubuh Anda.\n2. Kemudian lompatkan kaki Anda ke samping kanan dan kiri hingga kaki terbuka lebar. 3. Secara bersamaan, angkat tangan Anda ke atas kepala seperti bertepuk tangan.\n4. Segera kembali lagi ke posisi semula saat mendarat dan lakukan berulang-ulang.', 2),
-(19, 'Joget Rickroll', 20, 'joget ini melatih ketangkasan dan meningkatkan kesehatan jasmani dan rohani', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 3, 3, 'Joget Rickroll.jpg', '1. berdiri\r\n2. pakai sepatu mu\r\n3. joget lah sesukamu', 2);
+(19, 'Joget Rickroll', 20, 'joget ini melatih ketangkasan dan meningkatkan kesehatan jasmani dan rohani. joget ini melatih ketangkasan dan meningkatkan kesehatan jasmani dan rohani.joget ini melatih ketangkasan dan meningkatkan kesehatan jasmani dan rohani', 'https://www.youtube.com/embed/dQw4w9WgXcQ', 3, 3, 'Joget Rickroll.jpg', '1. berdiri\r\n2. pakai sepatu mu\r\n3. joget lah sesukamu', 2);
 
 -- --------------------------------------------------------
 
@@ -235,7 +236,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `detail_peralatan`
 --
 ALTER TABLE `detail_peralatan`
-  MODIFY `id_det_alat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_det_alat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `instruktur`

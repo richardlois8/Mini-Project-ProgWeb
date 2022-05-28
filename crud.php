@@ -48,6 +48,7 @@
                 <th>ID Kesulitan</th>
                 <th>Gambar</th>
                 <th>Langkah</th>
+                <th>ID Instruktur</th>
                 <th colspan="2">Action</th>
             </thead>
             <?php
