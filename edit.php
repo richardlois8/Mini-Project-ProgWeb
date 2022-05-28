@@ -28,8 +28,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sehat Dulu | Edit</title>
     <link rel="stylesheet" href="css/styleAdd.css">
+    <link rel="shortcut icon" href="images/logo-title.png" type="image/x-icon">
 </head>
 <body>
     <header>
@@ -148,6 +149,7 @@
     </table>
 
 </body>
+<script src="edit.js"></script>
 </html>
 
 <?php

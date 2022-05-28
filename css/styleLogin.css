@@ -51,17 +51,46 @@ header{
 }
 
 main{
-    background-color:#e8eff7 ;
+    background-image: url(../images/background-login.png) ;
+    background-repeat: no-repeat;
+    height: 900px;
     padding: 30px;
 }
 
-main > h2{
-    padding-top: 50px;
-    margin-top: 0;
+main h2{
+    padding: 100px 0px 50px 100px;
+    /* margin-top: 20px; */
+    font-size: 60px;
+    float: left;
 }
 
 form{
     margin-bottom: 10px;
+}
+
+.form-login{
+    float: right;
+    margin: 200px 50px 0px 250px;
+    font-size: 30px;
+    background-color: white;
+    padding: 50px 30px 30px 30px;
+}
+
+.form-login img{
+    display: block;
+    width: 200px;
+    margin-left: 60px;
+    margin-bottom: 20px;
+}
+
+.form-login input{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.form-login button{
+    font-size: 25px;
+    float: right;
 }
 
 footer{

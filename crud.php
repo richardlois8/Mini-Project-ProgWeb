@@ -6,7 +6,13 @@
         header("Location: index.php");
     }
 
-    $sql = "SELECT * FROM olahraga";
+    $sql = "select olahraga.id_olahraga,nama_olahraga,durasi,tipe_olahraga,tingkat_kesulitan,nama_instruktur,nama_peralatan,deskripsi,step,image,video
+    from olahraga
+    join kesulitan k on k.id_kesulitan = olahraga.id_kesulitan
+    join instruktur i on olahraga.id_instruktur = i.id_instruktur
+    join tipe_olahraga t on t.id_tipe = olahraga.id_tipe
+    join detail_peralatan dp on olahraga.id_olahraga = dp.id_olahraga
+    join peralatan p on p.id_peralatan = dp.id_alat;";
     $result = query($sql);
 ?>
 
@@ -17,6 +23,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styleCrud.css">
+    <link rel="shortcut icon" href="images/logo-title.png" type="image/x-icon">
     <title>Sehat Dulu | Admin</title>
 </head>
 <body>
@@ -41,23 +48,31 @@
             <thead>
                 <th>#</th>
                 <th>Nama</th>
-                <th>Durasi</th>
+                <th>Durasi (menit)</th>
+                <th>Tipe</th>
+                <th>Kesulitan</th>
+                <th>Instruktur</th>
+                <th>Peralatan</th>
                 <th>Deskripsi</th>
-                <th>Video</th>
-                <th>ID Tipe</th>
-                <th>ID Kesulitan</th>
-                <th>Gambar</th>
                 <th>Langkah</th>
-                <th>ID Instruktur</th>
+                <th>Gambar</th>
+                <th>Video</th>
                 <th colspan="2">Action</th>
             </thead>
             <?php
                 for ($i=0; $i < count($result); $i++) {
                     echo "<tr>";
                     foreach ($result[$i] as $key => $value) {
-                        echo "<td>";
-                        echo $value;
-                        echo "</td>";
+                        if($key == "id_olahraga"){
+                            echo "<td>";
+                            echo $i+1;
+                            echo "</td>";
+                        }
+                        else{
+                            echo "<td>";
+                            echo $value;
+                            echo "</td>";
+                        }
                     }
 
                     echo "<td>";

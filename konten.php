@@ -18,7 +18,7 @@ if($_GET){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sehat Dulu | <?=$result["nama_olahraga"];?></title>
-    <link rel="stylesheet" href="css/styleKonten.css">
+    <link rel="stylesheet" href="css/styleKonten.css?<?php echo time(); ?>">
     <link rel="shortcut icon" href="images/logo-title.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
@@ -62,17 +62,21 @@ if($_GET){
                 <div class="desc">
                     <h2>Deskripsi</h2>
                     <p><?= $result["deskripsi"]  ?></p>
-                    <!-- <p>Donkey kicks adalah gerakan yang sangat mudah yang menargetkan tempat di mana bokong dan hamstring kamu bertemu dan membantu kamu mengencangkan otot-otot bokong. Yang lebih menarik adalah bahwa latihan ini juga membantu mengencangkan perut dan memperkuat tulang belakang kamu.</p> -->
                 </div>
                 <div class="step">
                     <h2>Langkah : </h2>
-                    <?= $result['step']  ?>
-                    <!-- <ol>
-                        <li>Merangkaklah. Dengan telapak tangan diletakkan langsung di bawah bahu dan lutut di bawah pinggul.</li>
-                        <li>Pertahankan lutut kanan ditekuk pada 90 derajat, angkat kaki sepenuhnya hingga kamu nyaman.</li>
-                        <li>Turunkan lutut Anda tanpa menyentuh lantai, dan angkat lagi. Ulangi 20 kali.</li>
-                        <li>Sekarang lakukan hal yang sama dengan kaki kiri kamu.</li>
-                    </ol> -->
+                    <ol>
+                    <?php
+                        foreach(explode(".",$result['step']) as $line){
+                            if(is_numeric($line) || $line == null){
+                               continue;
+                            }
+                            else{
+                                echo "<li>".$line."</li>";
+                            }
+                        }
+                    ?>
+                    </ol>
                 </div>
             </div>
         </section>

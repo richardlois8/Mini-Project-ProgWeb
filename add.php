@@ -14,8 +14,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sehat Dulu | Add</title>
     <link rel="stylesheet" href="css/styleAdd.css">
+    <link rel="shortcut icon" href="images/logo-title.png" type="image/x-icon">
 </head>
 <body>
     <header>
@@ -38,15 +39,7 @@
                 </tr>
                 <tr>
                     <td>Durasi</td>
-                    <td><input type="text" name="durasi" class="form-text"></td>
-                </tr>
-                <tr>
-                    <td>Deskripsi</td>
-                    <td><textarea name="deskripsi" class="form-textarea"></textarea></td>
-                </tr>
-                <tr>
-                    <td>Link Video</td>
-                    <td><input type="text" name="video" class="form-text"></td>
+                    <td><input type="number" name="durasi" class="form-text"></td>
                 </tr>
                 <tr>
                     <td>Tipe Olahraga</td>
@@ -64,7 +57,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Tipe Kesulitan</td>
+                    <td>Tingkat Kesulitan</td>
                     <td>
                         <select name="comboKesulitan">
                         <option selected hidden disabled>Pilih Tingkat Kesulitan</option>
@@ -78,7 +71,6 @@
                         </select>
                     </td>
                 </tr>
-
                 <tr>
                     <td>Instruktur</td>
                     <td>
@@ -94,15 +86,28 @@
                         </select>
                     </td>
                 </tr>
-
+                <tr>
+                    <td>Peralatan</td>
+                    <td>
+                        <input type="checkbox" class="comboPeralatan" value="Matras">Matras
+                        <input type="checkbox" class="comboPeralatan" value="Dumbbell">Dumbbell
+                    </td>
+                </tr>
+                <tr>
+                    <td>Deskripsi</td>
+                    <td><textarea name="deskripsi" class="form-textarea"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Langkah</td>
+                    <td><textarea name="step" class="form-textarea"></textarea></td>
+                </tr>
                 <tr>
                     <td>Gambar</td>
                     <td><input type="file" name="gambar" accept="image/png, image/jpeg"></td>
                 </tr>
-                
                 <tr>
-                    <td>Langkah</td>
-                    <td><textarea name="step" class="form-textarea"></textarea></td>
+                    <td>Link Video</td>
+                    <td><input type="text" name="video" class="form-text"></td>
                 </tr>
                 <tr>
                     <td><a href="crud.php"><< Back</a></td>
@@ -113,11 +118,10 @@
     </table>
 
 </body>
+<script src="js/add.js"></script>
 </html>
 
 <?php
-
-
     if(isset($_POST['submit'])){
         $olahraga = $_POST['nama_olahraga'];
         $durasi = $_POST['durasi'];

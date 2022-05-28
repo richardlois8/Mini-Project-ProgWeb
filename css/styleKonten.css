@@ -153,8 +153,13 @@ div.bottom-content{
     transition:all 5s;
 }
 
-.step, .desc{
+.desc{
     float : left;
+}
+
+.step{
+    float: left;
+    margin-bottom: 30px;
 }
 
 .step li{

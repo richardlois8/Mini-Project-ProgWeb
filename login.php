@@ -16,8 +16,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sehat Dulu | Login</title>
-    <link rel="stylesheet" href="css/styleDaftar.css">
-    <link rel="shortcut icon" href="../images/logo-title.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/styleLogin.css?<?php echo time(); ?>">
+    <link rel="shortcut icon" href="images/logo-title.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -35,13 +35,16 @@
 
     <main>
         <h2>Selamat Datang</h2>
-        <form action="login.php" method="POST">
-            <label for="username">Username :</label><br>
-            <input type="text" id="username" name="username"><br>
-            <label for="password">Password :</label><br>
-            <input type="password" id="password" name="password">
-            <button type="submit" value="submit" name ="submit" id="submit">Login</button>
-        </form>
+        <div class="form-login">
+            <form action="login.php" method="POST">
+                <img src="images/contact/admin.png" alt="Admin">
+                <!-- <label for="username">Username :</label><br> -->
+                <input type="text" id="username" name="username" placeholder="Username"><br>
+                <!-- <label for="password">Password :</label><br> -->
+                <input type="password" id="password" name="password" placeholder="Password"> <br>
+                <button type="submit" value="submit" name ="submit" id="submit">Login</button>
+            </form>
+        </div>
     </main>
 
     <footer>
