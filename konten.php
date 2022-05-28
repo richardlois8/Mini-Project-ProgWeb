@@ -5,9 +5,8 @@ if($_GET){
     $allResult = query("SELECT nama_olahraga,video,tingkat_kesulitan,durasi,tipe_olahraga,nama_instruktur,nama_peralatan,deskripsi,step FROM olahraga
     join kesulitan k on k.id_kesulitan = olahraga.id_kesulitan
     join tipe_olahraga t on t.id_tipe = olahraga.id_tipe
-    join detail_instruktur di on olahraga.id_olahraga = di.id_olahraga
     join detail_peralatan dp on olahraga.id_olahraga = dp.id_olahraga
-    join instruktur i on di.id_instruktur = i.id_instruktur
+    join instruktur i on olahraga.id_instruktur = i.id_instruktur
     join peralatan p on dp.id_alat = p.id_peralatan WHERE olahraga.nama_olahraga LIKE '%".$_GET['name']."%'");
     $result = $allResult[0];
 }

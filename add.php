@@ -2,10 +2,10 @@
     require('functions.php');
     // # KODE INI UNTUK MENCEGAH USER PAKSA DIRECT KE CRUD #
 
-    // session_start();
-    // if(!isset($_SESSION['userLogin']) || $_SESSION['userLogin'] == ""){
-    //     header("Location: index.php");
-    // }
+    session_start();
+    if(!isset($_SESSION['userLogin']) || $_SESSION['userLogin'] == ""){
+        header("Location: index.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +52,7 @@
                     <td>Tipe Olahraga</td>
                     <td>
                         <select name="comboTipe">
-                        <option value="">Pilih Tipe Olahraga</option>
+                        <option selected hidden disabled>Pilih Tipe Olahraga</option>
                             <?php
                                 $query = "SELECT * FROM tipe_olahraga ORDER BY tipe_olahraga ASC";
                                 $result = mysqli_query($conn,$query);
@@ -67,7 +67,7 @@
                     <td>Tipe Kesulitan</td>
                     <td>
                         <select name="comboKesulitan">
-                        <option value="">Pilih Tingkat Kesulitan</option>
+                        <option selected hidden disabled>Pilih Tingkat Kesulitan</option>
                             <?php
                                 $query = "SELECT * FROM kesulitan";
                                 $result = mysqli_query($conn,$query);
@@ -78,9 +78,26 @@
                         </select>
                     </td>
                 </tr>
+
+                <tr>
+                    <td>Instruktur</td>
+                    <td>
+                        <select name="comboInstruktur">
+                        <option selected hidden disabled>Pilih Instruktur</option>
+                            <?php
+                                $query = "SELECT * FROM instruktur";
+                                $result = mysqli_query($conn,$query);
+                                while($row = mysqli_fetch_assoc($result)){
+                                    echo "<option value = '". $row['id_instruktur']. "'>". $row['nama_instruktur']. "</option>";
+                                }
+                            ?>
+                        </select>
+                    </td>
+                </tr>
+
                 <tr>
                     <td>Gambar</td>
-                    <td><input type="file" name="gambar"></td>
+                    <td><input type="file" name="gambar" accept="image/png, image/jpeg"></td>
                 </tr>
                 
                 <tr>

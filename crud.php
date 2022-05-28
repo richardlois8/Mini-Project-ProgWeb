@@ -1,10 +1,10 @@
 <?php
     require('functions.php');
 
-    // session_start();
-    // if(!isset($_SESSION['userLogin']) || $_SESSION['userLogin'] == ""){
-    //     header("Location: index.php");
-    // }
+    session_start();
+    if(!isset($_SESSION['userLogin']) || $_SESSION['userLogin'] == ""){
+        header("Location: index.php");
+    }
 
     $sql = "SELECT * FROM olahraga";
     $result = query($sql);
@@ -28,7 +28,7 @@
             <a href="index.php">Beranda</a>
             <a href="latihan.php">Latihan</a>
             <a href="kontak.php">Kontak</a>
-            <a href="index.php">Logout</a>
+            <a href="logout.php">Logout</a>
         </div>
     </header>
 

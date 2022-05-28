@@ -1,11 +1,11 @@
 <?php
     require('functions.php');
-    // # KODE INI UNTUK MENCEGAH USER PAKSA DIRECT KE CRUD #
+    # KODE INI UNTUK MENCEGAH USER PAKSA DIRECT KE CRUD #
 
-    // session_start();
-    // if(!isset($_SESSION['userLogin']) || $_SESSION['userLogin'] == ""){
-    //     header("Location: index.php");
-    // }
+    session_start();
+    if(!isset($_SESSION['userLogin']) || $_SESSION['userLogin'] == ""){
+        header("Location: index.php");
+    }
 ?>
 
 <?php 
@@ -20,15 +20,6 @@
         //     print_r($row);
         // }
     }
-?>
-
-<?php
-    // # KODE INI UNTUK MENCEGAH USER PAKSA DIRECT KE CRUD #
-
-    // session_start();
-    // if(!isset($_SESSION['userLogin']) || $_SESSION['userLogin'] == ""){
-    //     header("Location: index.php");
-    // }
 ?>
 
 <!DOCTYPE html>
@@ -97,9 +88,9 @@
                     <td>Tipe Kesulitan</td>
                     <td>
                         <select name="comboKesulitan" selected= "<?= $hasil["id_kesulitan"] ?>">
-                        <option value="" selected hidden disabled>Pilih Tingkat Kesulitan</option>
+                        <option selected hidden disabled>Pilih Tingkat Kesulitan</option>
                             <?php
-                                $query = "SELECT * FROM kesulitan ORDER BY id_kesulitan ASC";
+                                $query = "SELECT * FROM kesulitan";
                                 $result = mysqli_query($conn,$query);
 
                                 $counter2 = 1;
@@ -112,13 +103,33 @@
                                     $counter2+=1;
                                 }
                             ?>
-                            <script>
-                                console.log(<?= $hasil["id_kesulitan"] ?>)
-                                console.log(<?= $counter2 ?>)
-                            </script>
                         </select>
                     </td>
                 </tr>
+
+                <tr>
+                    <td>Instruktur</td>
+                    <td>
+                        <select name="comboInstruktur">
+                        <option selected hidden disabled>Pilih Instruktur</option>
+                            <?php
+                                $query = "SELECT * FROM instruktur";
+                                $result = mysqli_query($conn,$query);
+
+                                $counter3 = 1;
+                                while($row = mysqli_fetch_assoc($result)){
+                                    if(intval(intval($hasil["id_instruktur"])) == $counter2){
+                                        echo "<option selected value = '". $row['id_instruktur']. "'>". $row['nama_instruktur']. "</option>";
+                                    }else{
+                                        echo "<option value = '". $row['id_instruktur']. "'>". $row['nama_instruktur']. "</option>";
+                                    }
+                                    $counter3+=1;
+                                }
+                            ?>
+                        </select>
+                    </td>
+                </tr>
+
                 <tr>
                     <td>Gambar</td>
                     <td><input type="file" name="gambar" accept="image/png, image/jpeg"></td>

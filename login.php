@@ -7,22 +7,6 @@
             header("location:crud.php");
         }
     }
-
-    // if(isset($_POST["submit"])){
-    //     $username = $_POST['username'];
-    //     $password = $_POST["password"];
-    //     $sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password' LIMIT 1;";
-    //     $result = query($sql);
-        
-    //     if(count($result) > 0){
-    //         if($result[0]['username'] == "admin" && $result[0]['password'] == "admin"){
-    //             $_SESSION['userLogin'] = "true";
-    //             header("Location: crud.php");
-    //         }
-    //     }else{
-    //         echo "<script>alert('Username atau Password salah');</script>";
-    //     }
-    // }
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +35,6 @@
 
     <main>
         <h2>Selamat Datang</h2>
-        <!-- <h4>Hidup sehat bersama Sehat Dulu</h4> -->
         <form action="login.php" method="POST">
             <label for="username">Username :</label><br>
             <input type="text" id="username" name="username"><br>
@@ -62,7 +45,6 @@
     </main>
 
     <footer>
-        <!-- <img src="images/logo-black.png" alt="logo"> -->
         <div class="icon">
             <i class="fa fa-facebook fa-2x"></i>
             <i class="fa fa-twitter fa-2x"></i>
