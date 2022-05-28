@@ -89,8 +89,15 @@
                 <tr>
                     <td>Peralatan</td>
                     <td>
-                        <input type="checkbox" class="comboPeralatan" value="Matras">Matras
-                        <input type="checkbox" class="comboPeralatan" value="Dumbbell">Dumbbell
+                        <?php
+                            $query = "SELECT * FROM peralatan";
+                            $result = mysqli_query($conn,$query);
+                            while($row = mysqli_fetch_assoc($result)){
+                                echo "<input type='checkbox' name='comboAlat[]' value= '". $row['id_peralatan']. "'>". $row['nama_peralatan']. "</input>";
+                            }
+                            ?>
+                        <!-- <input type="checkbox" class="comboPeralatan" value="Matras">Matras
+                        <input type="checkbox" class="comboPeralatan" value="Dumbbell">Dumbbell -->
                     </td>
                 </tr>
                 <tr>
@@ -131,6 +138,7 @@
         $kesulitan = $_POST['comboKesulitan'];
         $gambar = "";
         $step = $_POST['step'];
+        $alat = $_POST['comboAlat'];
 
         if(isset($_FILES["gambar"]["name"])){
             $ekstensi = explode(".",$_FILES["gambar"]["name"]);
@@ -145,11 +153,19 @@
         }
 
         $sql = "INSERT INTO olahraga VALUES ('','$olahraga',$durasi,'$desc','$vid',$tipe,$kesulitan,'$gambar','$step')";
-        
+        $id_olahraga = 0;
+
         if(mysqli_query($conn,$sql)){
             echo "Berhasil menambahkan data<br>";
+            $id_olahraga = query("SELECT id_olahraga FROM olahraga WHERE nama_olahraga LIKE '%".$olahraga."%'")['id_olahraga'];
         }else{
             echo "Gagal menambahkan data<br>";
         }
+
+        foreach($alat as $id_alat){
+            $sqlAlat = "INSERT INTO detail_peralatan VALUES('','$id_olahraga','$id_alat')";
+            mysqli_query($conn,$sql);
+        }
+       
     }
 ?>

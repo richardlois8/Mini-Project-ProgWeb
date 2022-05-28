@@ -51,18 +51,12 @@
                     <td>Nama Olahraga </td>
                     <td><input type="text" name="nama_olahraga" class="form-text" value= "<?= $hasil["nama_olahraga"] ?>"></td>
                 </tr>
+                
                 <tr>
                     <td>Durasi</td>
                     <td><input type="text" name="durasi" class="form-text" value= "<?= $hasil["durasi"] ?>"></td>
                 </tr>
-                <tr>
-                    <td>Deskripsi</td>
-                    <td><textarea name="deskripsi" class="form-textarea"><?= $hasil["deskripsi"] ?></textarea></td>
-                </tr>
-                <tr>
-                    <td>Link Video</td>
-                    <td><input type="text" name="video" class="form-text" value= "<?= $hasil["video"] ?>"></td>
-                </tr>
+
                 <tr>
                     <td>Tipe Olahraga</td>
                     <td>
@@ -85,8 +79,9 @@
                         </select>
                     </td>
                 </tr>
+
                 <tr>
-                    <td>Tipe Kesulitan</td>
+                    <td>Tingkat Kesulitan</td>
                     <td>
                         <select name="comboKesulitan" selected= "<?= $hasil["id_kesulitan"] ?>">
                         <option selected hidden disabled>Pilih Tingkat Kesulitan</option>
@@ -132,14 +127,40 @@
                 </tr>
 
                 <tr>
-                    <td>Gambar</td>
-                    <td><input type="file" name="gambar" accept="image/png, image/jpeg"></td>
+                    <td>Peralatan</td>
+                    <td>
+                        <?php
+                            $query = "SELECT * FROM peralatan";
+                            $result = mysqli_query($conn,$query);
+                            while($row = mysqli_fetch_assoc($result)){
+                                echo "<input type='checkbox' name='comboAlat[]' value= '". $row['id_peralatan']. "'>". $row['nama_peralatan']. "</input>";
+                            }
+                            ?>
+                        <!-- <input type="checkbox" class="comboPeralatan" value="Matras">Matras
+                        <input type="checkbox" class="comboPeralatan" value="Dumbbell">Dumbbell -->
+                    </td>
                 </tr>
-                
+
+                <tr>
+                    <td>Deskripsi</td>
+                    <td><textarea name="deskripsi" class="form-textarea"><?= $hasil["deskripsi"] ?></textarea></td>
+                </tr>
+
                 <tr>
                     <td>Langkah</td>
                     <td><textarea name="step" class="form-textarea"><?= $hasil["step"] ?></textarea></td>
                 </tr>
+
+                <tr>
+                    <td>Gambar</td>
+                    <td><input type="file" name="gambar" accept="image/png, image/jpeg"></td>
+                </tr>
+
+                <tr>
+                    <td>Link Video</td>
+                    <td><input type="text" name="video" class="form-text" value= "<?= $hasil["video"] ?>"></td>
+                </tr>
+
                 <tr>
                     <td><a href="crud.php"><< Back</a></td>
                     <td><input type="submit" name = "submit" value="Submit"></td>
