@@ -163,11 +163,11 @@ main{
 
 .contents-wrap img{
     /* position: relative; */
-    /* width: 75%; */
-    width: 400px;
-    margin-left: 55px;
+    width: 75%;
+    /* width: 400px; */
+    /* margin-left: 55px; */
     display: block;
-    /* margin: auto; */
+    margin: auto;
     margin-bottom: 40px;
 }
 
@@ -179,12 +179,12 @@ main{
 .img-overlay{
     position: absolute;
     top: 0;
-    left:12%;
+    left:12.5%;
     right: 0;
     bottom: 0;
     opacity: 0;
-    /* width: 75%; */
-    width: 400px;
+    width: 75%;
+    /* width: 400px; */
     transition: opacity 0.4s ease-in-out;
     background-color: rgba(63, 56, 163, 0.8);
     cursor: pointer;
