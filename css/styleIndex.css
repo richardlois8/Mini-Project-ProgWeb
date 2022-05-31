@@ -225,17 +225,36 @@ main{
     float: left;
 }
 
+.search-content h2{
+    margin-bottom: 0px;
+}
+
 .search-content h2 a{
     margin: 20px 0px 0px 60px;
     color: #001D6E;
     font-size: 60px;
 }
 
-.search-content p{
+.search-content h3{
+    margin: 0px 0px 10px 400px;
+    color: #001D6E;
     font-size: 20px;
+}
+
+.search-content h3 span{
+    color: #ffb41f;
+    font-size: 20px;
+}
+
+.search-content p{
+    font-size: 16px;
     font-weight: 200;
     text-align: justify;
     margin: 10px 50px 0px 400px;
+}
+
+.search-content p a{
+    color: #f4a810;
 }
 
 /* .wrap-image img{

@@ -38,11 +38,10 @@
                     <form action="index.php" method="post">
                         <input id="search-box" type="text" placeholder="Cari Latihan" autocomplete="off" name="keyword">
                         <button type="search" id="search-button" name="search">
-                    </form>
-                        <i class="fa fa-search"></i>
-                    </button>
+                            <a href="#result"><i class="fa fa-search"></i></a>
+                        </button>
+                    </form>        
                 </div>
-
             </div>
         </div>
         
@@ -74,7 +73,9 @@
                             echo '<div class="search-content">';
                             echo '<img class="img-content-search" src="images/workout/'.$content['image'].'" alt='.$content['nama_olahraga'].'>';
                             echo '<h2><a href="konten.php?name='.$content['nama_olahraga'].'">'.$content['nama_olahraga'].'</a></h2>';
-                            echo '<p>'.$content['deskripsi'].'</p>';
+                            echo '<h3> Tipe Olahraga : <span>'.$content['tipe_olahraga'].'</span></h3>';
+                            echo '<h3> Tingkat Kesulitan : <span>'.$content['tingkat_kesulitan'].'</span></h3>';
+                            echo '<p>'.$content['deskripsi'].' <a href="konten.php?name='.$content['nama_olahraga'].'">Lihat lebih lengkap...</a></p>';
                             echo "</div>";
                             echo "</tr>";
                         }

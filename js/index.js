@@ -1,5 +1,5 @@
-const btnSearch = document.getElementById("search-button");
+// const btnSearch = document.getElementById("search-button");
 
-btnSearch.addEventListener("click", ()=>{
-    window.scrollTo(0,1000);
-})
+// btnSearch.addEventListener("click", ()=>{
+//     window.scrollTo(0,1000);
+// })

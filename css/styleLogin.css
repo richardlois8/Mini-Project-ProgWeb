@@ -57,6 +57,7 @@ main{
     padding: 30px;
 }
 
+/* UNTUK SCALING 125% */
 main h2{
     padding: 100px 0px 50px 100px;
     /* margin-top: 20px; */
@@ -75,6 +76,26 @@ form{
     background-color: white;
     padding: 50px 30px 30px 30px;
 }
+
+/* UNTUK SCALING !00% */
+/* main h2{
+    padding: 100px 0px 50px 150px;
+    /* margin-top: 20px; */
+    /* font-size: 60px;
+    float: left; */
+/* }  */
+
+/* form{
+    margin-bottom: 10px;
+}
+
+.form-login{
+    float: right;
+    margin: 230px 150px 0px 250px;
+    font-size: 30px;
+    background-color: white;
+    padding: 50px 30px 30px 30px;
+} */
 
 .form-login img{
     display: block;
