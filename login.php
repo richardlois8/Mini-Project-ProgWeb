@@ -39,9 +39,9 @@
             <form action="login.php" method="POST">
                 <img src="images/contact/admin.png" alt="Admin">
                 <!-- <label for="username">Username :</label><br> -->
-                <input type="text" id="username" name="username" placeholder="Username"><br>
+                <input type="text" id="username" name="username" placeholder="  Username"><br>
                 <!-- <label for="password">Password :</label><br> -->
-                <input type="password" id="password" name="password" placeholder="Password"> <br>
+                <input type="password" id="password" name="password" placeholder="  Password"> <br>
                 <button type="submit" value="submit" name ="submit" id="submit">Login</button>
             </form>
         </div>
