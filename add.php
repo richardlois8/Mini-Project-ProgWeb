@@ -32,19 +32,19 @@
     </header>
     <table>
         <div class="form-wrapper">
-            <form action="add.php" method="post" enctype="multipart/form-data">
+            <form action="add.php" method="post" enctype="multipart/form-data" >
                 <tr>
                     <td>Nama Olahraga </td>
-                    <td><input type="text" name="nama_olahraga" class="form-text"></td>
+                    <td><input type="text" name="nama_olahraga" id="nama_olahraga" class="form-text"></td>
                 </tr>
                 <tr>
                     <td>Durasi</td>
-                    <td><input type="number" name="durasi" class="form-text"></td>
+                    <td><input type="number" name="durasi" id="durasi" class="form-text"></td>
                 </tr>
                 <tr>
                     <td>Tipe Olahraga</td>
                     <td>
-                        <select name="comboTipe">
+                        <select name="comboTipe" id="comboTipe">
                         <option selected hidden disabled>Pilih Tipe Olahraga</option>
                             <?php
                                 $query = "SELECT * FROM tipe_olahraga ORDER BY tipe_olahraga ASC";
@@ -59,7 +59,7 @@
                 <tr>
                     <td>Tingkat Kesulitan</td>
                     <td>
-                        <select name="comboKesulitan">
+                        <select name="comboKesulitan" id="comboKesulitan">
                         <option selected hidden disabled>Pilih Tingkat Kesulitan</option>
                             <?php
                                 $query = "SELECT * FROM kesulitan";
@@ -74,7 +74,7 @@
                 <tr>
                     <td>Instruktur</td>
                     <td>
-                        <select name="comboInstruktur">
+                        <select name="comboInstruktur" id="comboInstruktur">
                         <option selected hidden disabled>Pilih Instruktur</option>
                             <?php
                                 $query = "SELECT * FROM instruktur";
@@ -93,7 +93,7 @@
                             $query = "SELECT * FROM peralatan";
                             $result = mysqli_query($conn,$query);
                             while($row = mysqli_fetch_assoc($result)){
-                                echo "<input type='checkbox' name='comboAlat[]' value= '". $row['id_peralatan']. "'>". $row['nama_peralatan']. "</input>";
+                                echo "<input type='checkbox' name='comboAlat[]' class='alat' value= '". $row['id_peralatan']. "'>". $row['nama_peralatan']. "</input>";
                             }
                             ?>
                         <!-- <input type="checkbox" class="comboPeralatan" value="Matras">Matras
@@ -102,30 +102,30 @@
                 </tr>
                 <tr>
                     <td>Deskripsi</td>
-                    <td><textarea name="deskripsi" class="form-textarea"></textarea></td>
+                    <td><textarea name="deskripsi" id="deskripsi" class="form-textarea"></textarea></td>
                 </tr>
                 <tr>
                     <td>Langkah</td>
-                    <td><textarea name="step" class="form-textarea"></textarea></td>
+                    <td><textarea name="step" id="step" class="form-textarea"></textarea></td>
                 </tr>
                 <tr>
                     <td>Gambar</td>
-                    <td><input type="file" name="gambar" accept="image/png, image/jpeg"></td>
+                    <td><input type="file" name="gambar" id="gambar" accept="image/png, image/jpeg"></td>
                 </tr>
                 <tr>
                     <td>Link Video</td>
-                    <td><input type="text" name="video" class="form-text"></td>
+                    <td><input type="text" name="video" id="video" class="form-text"></td>
                 </tr>
                 <tr>
                     <td><a href="crud.php"><< Back</a></td>
-                    <td><input type="submit" name = "submit" value="Submit"></td>
+                    <td><input type="submit" name ="submit" value="Submit" onclick="validation()"></td>
                 </tr>
             </form>
         </div>
     </table>
 
 </body>
-<script src="js/add.js"></script>
+<script src="js/add.js?v=1"></script>
 </html>
 
 <?php
@@ -139,6 +139,7 @@
         $gambar = "";
         $step = $_POST['step'];
         $alat = $_POST['comboAlat'];
+        $instruktur = $_POST["comboInstruktur"];
 
         if(isset($_FILES["gambar"]["name"])){
             $ekstensi = explode(".",$_FILES["gambar"]["name"]);
@@ -152,19 +153,23 @@
             }
         }
 
-        $sql = "INSERT INTO olahraga VALUES ('','$olahraga',$durasi,'$desc','$vid',$tipe,$kesulitan,'$gambar','$step')";
+        $sql = "INSERT INTO olahraga VALUES ('','$olahraga',$durasi,'$desc','$vid',$tipe,$kesulitan,'$gambar','$step','$instruktur')";
         $id_olahraga = 0;
 
         if(mysqli_query($conn,$sql)){
             echo "Berhasil menambahkan data<br>";
-            $id_olahraga = query("SELECT id_olahraga FROM olahraga WHERE nama_olahraga LIKE '%".$olahraga."%'")['id_olahraga'];
         }else{
             echo "Gagal menambahkan data<br>";
+            echo "mysqli_error($conn);";
         }
+        
+        $id_olahraga = query("SELECT id_olahraga FROM olahraga WHERE nama_olahraga LIKE '$olahraga%'");
 
+        var_dump($id_olahaga);
         foreach($alat as $id_alat){
             $sqlAlat = "INSERT INTO detail_peralatan VALUES('','$id_olahraga','$id_alat')";
-            mysqli_query($conn,$sql);
+            mysqli_query($conn,$sqlAlat);
+            
         }
        
     }

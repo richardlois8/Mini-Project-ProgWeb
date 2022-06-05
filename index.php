@@ -83,7 +83,7 @@
                     else{
                         $column = 1;
                         foreach($contents as $content){
-                            if($column == 1 || $column == 4){
+                            if($column%3 == 1){
                                 echo "<tr>";
                             }
 
@@ -96,7 +96,7 @@
                             echo "</div>";
                             echo "</td>";
 
-                            if($column == 3 || $column == 6){
+                            if($column%3 == 0){
                                 echo "</tr>";
                             }
                             $column += 1;
