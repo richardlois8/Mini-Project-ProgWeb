@@ -160,17 +160,14 @@
             echo "Berhasil menambahkan data<br>";
         }else{
             echo "Gagal menambahkan data<br>";
-            echo "mysqli_error($conn);";
         }
         
-        $id_olahraga = query("SELECT id_olahraga FROM olahraga WHERE nama_olahraga LIKE '$olahraga%'");
-
-        var_dump($id_olahaga);
+        $query = mysqli_query($conn,"SELECT id_olahraga FROM olahraga WHERE nama_olahraga LIKE '$olahraga%'");
+        $id_olahraga = mysqli_fetch_assoc($query)["id_olahraga"];
+        echo $id_olahraga;
         foreach($alat as $id_alat){
             $sqlAlat = "INSERT INTO detail_peralatan VALUES('','$id_olahraga','$id_alat')";
             mysqli_query($conn,$sqlAlat);
-            
         }
-       
     }
 ?>

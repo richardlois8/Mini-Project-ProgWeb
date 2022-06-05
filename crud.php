@@ -6,13 +6,13 @@
         header("Location: index.php");
     }
 
-    $sql = "select olahraga.id_olahraga,nama_olahraga,durasi,tipe_olahraga,tingkat_kesulitan,nama_instruktur,nama_peralatan,deskripsi,step,image,video
-    from olahraga
-    join kesulitan k on k.id_kesulitan = olahraga.id_kesulitan
-    join instruktur i on olahraga.id_instruktur = i.id_instruktur
-    join tipe_olahraga t on t.id_tipe = olahraga.id_tipe
-    join detail_peralatan dp on olahraga.id_olahraga = dp.id_olahraga
-    join peralatan p on p.id_peralatan = dp.id_alat;";
+    $sql = "SELECT olahraga.id_olahraga,nama_olahraga,durasi,tipe_olahraga,tingkat_kesulitan,nama_instruktur,nama_peralatan,deskripsi,step,image,video
+    FROM olahraga
+    JOIN kesulitan k on k.id_kesulitan = olahraga.id_kesulitan
+    JOIN instruktur i on olahraga.id_instruktur = i.id_instruktur
+    JOIN tipe_olahraga t on t.id_tipe = olahraga.id_tipe
+    JOIN detail_peralatan dp on olahraga.id_olahraga = dp.id_olahraga
+    JOIN peralatan p on p.id_peralatan = dp.id_alat ORDER BY nama_olahraga;";
     $result = query($sql);
 ?>
 
@@ -22,8 +22,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styleCrud.css">
+    <link rel="stylesheet" href="css/styleCrud.css?<?php echo time(); ?>">
     <link rel="shortcut icon" href="images/logo-title.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Sehat Dulu | Admin</title>
 </head>
 <body>
@@ -87,5 +88,26 @@
             ?>
         </table>
     </main>
+
+    <footer>
+        <div class="icon">
+            <i class="fa fa-facebook fa-2x"></i>
+            <i class="fa fa-twitter fa-2x"></i>
+            <i class="fa fa-instagram fa-2x"></i>
+            <i class="fa fa-whatsapp fa-2x"></i>
+        </div>
+        <div class="footer-menu">
+            <ul>
+                <li><a href="#">Workout Videos</a></li>
+                <li><a href="#">Instructor</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+        <div class="caption-footer">
+            <h3>Sehat Dulu</h3>
+            <p>Let's go workout at home | All Rights Reserved</p>
+        </div>
+    </footer>
+
 </body>
 </html>

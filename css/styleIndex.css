@@ -161,13 +161,13 @@ main{
     padding: 30px;
 }
 
-.contents-wrap img{
-    /* position: relative; */
-    width: 75%;
-    /* width: 400px; */
-    /* margin-left: 55px; */
+.img-content{
+    /* width: 75%; */
+    width: 400px;
+    height: 400px;
+    margin-left: 58px;
     display: block;
-    margin: auto;
+    /* margin: auto; */
     margin-bottom: 40px;
 }
 
@@ -183,8 +183,9 @@ main{
     right: 0;
     bottom: 0;
     opacity: 0;
-    width: 75%;
-    /* width: 400px; */
+    /* width: 75%; */
+    width: 400px;
+    height: 400px;
     transition: opacity 0.4s ease-in-out;
     background-color: rgba(63, 56, 163, 0.8);
     cursor: pointer;

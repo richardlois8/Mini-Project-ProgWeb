@@ -17,9 +17,6 @@ function validation(){
         }
     }
     if (nama.value==="" || durasi.value==="" || deskripsi.value==="" || video.value==="" || tipe.value==="" || comboKesulitan.value==="" || comboInstruktur.value==="" || step.value==="" || checked===false || gambar.value===""){
-        alert("SEMUA HARUS ISI BLOK");
-        
+        alert("Terdapat salah satu kolom yang kosong !");
     }
-    else {
-        alert("XXXX")}
-    }
+}

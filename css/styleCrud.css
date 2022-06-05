@@ -58,7 +58,7 @@ main > h2{
 table {
     border-collapse: collapse;
     border-radius: 15px;
-    margin: 25px 25px;
+    margin: 25px 35px 50px 35px;
     font-size: 0.9em;
     font-family: sans-serif;
     min-width: 400px;
@@ -91,4 +91,48 @@ table tbody tr:last-of-type {
 table tbody tr.active-row {
     font-weight: bold;
     color: #009879;
+}
+
+footer{
+    background-color: black;
+    height: max-content;
+}
+
+footer i{
+    color: white;
+    margin: 0px 15px;
+    margin-top: 30px;
+}
+
+.icon{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.footer-menu{
+    text-align: center;
+}
+
+.footer-menu ul{
+    display: inline-table;
+}
+
+footer li{
+    float: left;
+    margin-right: 30px;
+    display: inline;
+}
+
+.caption-footer{
+    text-align: center;
+    color: black;
+    font-size: smaller;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #e8eff7;
+}
+
+.caption-footer h3,p{
+    margin: 0;
+    padding: 0;
 }

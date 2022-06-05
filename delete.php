@@ -11,11 +11,16 @@
 <?php
     require('functions.php');
     $id = $_GET['id'];
-    $sql = "DELETE FROM olahraga WHERE id_olahraga='$id'";
-    if(mysqli_query($conn,$sql)){
-        echo "<a href='crud.php'>Kembali</a>";
-        echo "<script>alert(Berhasil menghapus sebanyak ".mysqli_affected_rows($conn).")</script>;";
-    }else{
-        echo "Gagal menghapus data";
+    $sqlNamaFile = mysqli_query($conn,"SELECT image FROM olahraga WHERE id_olahraga = $id");
+    $namaFIle = mysqli_fetch_assoc($sqlNamaFile)["image"];
+    echo $namaFIle;
+
+    $sqlDelAlat = mysqli_query($conn,"DELETE FROM detail_peralatan WHERE id_olahraga = $id");
+    if($sqlDelAlat){
+        $sqlDelOlahraga = mysqli_query($conn,"DELETE FROM olahraga WHERE id_olahraga = $id");
+        if($sqlDelOlahraga){
+            unlink("images/workout/".$namaFIle);
+            echo "<script>alert(Data berhasil dihapus. Data terhapus sebanyak ".mysqli_affected_rows($conn).")</script>;";
+        }
     }
 ?>
