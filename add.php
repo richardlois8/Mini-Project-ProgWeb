@@ -15,8 +15,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sehat Dulu | Add</title>
-    <link rel="stylesheet" href="css/styleAdd.css">
+    <link rel="stylesheet" href="css/styleAdd.css?<?php echo time(); ?>">
     <link rel="shortcut icon" href="images/logo-title.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
@@ -30,16 +31,16 @@
             <a href="index.php">Logout</a>
         </div>
     </header>
-    <table>
+    <table v-align="top">
         <div class="form-wrapper">
             <form action="add.php" method="post" enctype="multipart/form-data" >
                 <tr>
                     <td>Nama Olahraga </td>
-                    <td><input type="text" name="nama_olahraga" id="nama_olahraga" class="form-text"></td>
+                    <td><input type="text" name="nama_olahraga" id="nama_olahraga" class="form-text" value="<?= isset($_POST['nama_olahraga']) ? $_POST['nama_olahraga'] : ''; ?>"></td>
                 </tr>
                 <tr>
                     <td>Durasi</td>
-                    <td><input type="number" name="durasi" id="durasi" class="form-text"></td>
+                    <td><input type="number" name="durasi" id="durasi" class="form-text" value= "<?= isset($_POST['durasi']) ? $_POST['durasi'] : '' ?>"></td>
                 </tr>
                 <tr>
                     <td>Tipe Olahraga</td>
@@ -49,8 +50,18 @@
                             <?php
                                 $query = "SELECT * FROM tipe_olahraga ORDER BY tipe_olahraga ASC";
                                 $result = mysqli_query($conn,$query);
+                                // while($row = mysqli_fetch_assoc($result)){
+                                //     echo "<option value = '". $row['id_tipe']. "'>". $row['tipe_olahraga']. "</option>";
+                                // }
+                                $counter1 = 1;
+                                $newIdTipe = isset($_POST['comboTipe']) ? $_POST['comboTipe'] : '';
                                 while($row = mysqli_fetch_assoc($result)){
-                                    echo "<option value = '". $row['id_tipe']. "'>". $row['tipe_olahraga']. "</option>";
+                                    if(intval($newIdTipe) == $counter1){
+                                        echo "<option selected value = '". $row['id_tipe']. "'>". $row['tipe_olahraga'] . "</option>";
+                                    }else{
+                                        echo "<option value = '". $row['id_tipe']. "'>". $row['tipe_olahraga']. "</option>";
+                                    }
+                                    $counter1 += 1;
                                 }
                             ?>
                         </select>
@@ -64,8 +75,18 @@
                             <?php
                                 $query = "SELECT * FROM kesulitan";
                                 $result = mysqli_query($conn,$query);
+                                // while($row = mysqli_fetch_assoc($result)){
+                                //     echo "<option value = '". $row['id_kesulitan']. "'>". $row['tingkat_kesulitan']. "</option>";
+                                // }
+                                $counter2 = 1;
+                                $newIdKesulitan = isset($_POST['comboKesulitan']) ? $_POST['comboKesulitan'] : '';
                                 while($row = mysqli_fetch_assoc($result)){
-                                    echo "<option value = '". $row['id_kesulitan']. "'>". $row['tingkat_kesulitan']. "</option>";
+                                    if(intval($newIdKesulitan) == $counter2){
+                                        echo "<option selected value = '". $row['id_kesulitan']. "'>". $row['tingkat_kesulitan']. "</option>";
+                                    }else{
+                                        echo "<option value = '". $row['id_kesulitan']. "'>". $row['tingkat_kesulitan']. "</option>";
+                                    }
+                                    $counter2+=1;
                                 }
                             ?>
                         </select>
@@ -79,8 +100,18 @@
                             <?php
                                 $query = "SELECT * FROM instruktur";
                                 $result = mysqli_query($conn,$query);
+                                // while($row = mysqli_fetch_assoc($result)){
+                                //     echo "<option value = '". $row['id_instruktur']. "'>". $row['nama_instruktur']. "</option>";
+                                // }
+                                $counter3 = 1;
+                                $newIdInstruktur = isset($_POST['comboInstruktur']) ? $_POST['comboInstruktur'] : '';
                                 while($row = mysqli_fetch_assoc($result)){
-                                    echo "<option value = '". $row['id_instruktur']. "'>". $row['nama_instruktur']. "</option>";
+                                    if(intval($newIdInstruktur) == $counter3){
+                                        echo "<option selected value = '". $row['id_instruktur']. "'>". $row['nama_instruktur']. "</option>";
+                                    }else{
+                                        echo "<option value = '". $row['id_instruktur']. "'>". $row['nama_instruktur']. "</option>";
+                                    }
+                                    $counter3+=1;
                                 }
                             ?>
                         </select>
@@ -90,23 +121,25 @@
                     <td>Peralatan</td>
                     <td>
                         <?php
-                            $query = "SELECT * FROM peralatan";
-                            $result = mysqli_query($conn,$query);
-                            while($row = mysqli_fetch_assoc($result)){
-                                echo "<input type='checkbox' name='comboAlat[]' class='alat' value= '". $row['id_peralatan']. "'>". $row['nama_peralatan']. "</input>";
-                            }
-                            ?>
+                            // $query = "SELECT * FROM peralatan";
+                            // $result = mysqli_query($conn,$query);
+                            // while($row = mysqli_fetch_assoc($result)){
+                            //     echo "<input type='checkbox' name='comboAlat[]' class='alat' value= '". $row['id_peralatan']. "'>". $row['nama_peralatan']. "</input>";
+                            // }
+                        ?>
+                        <input type="text" id="alat" name="alat" class="form-text" value="<?= isset($_POST['alat']) ? $_POST['alat'] :'' ?>">
+                        <p id="lblAlat">*Pisahkan dengan koma</p>
                         <!-- <input type="checkbox" class="comboPeralatan" value="Matras">Matras
                         <input type="checkbox" class="comboPeralatan" value="Dumbbell">Dumbbell -->
                     </td>
                 </tr>
                 <tr>
                     <td>Deskripsi</td>
-                    <td><textarea name="deskripsi" id="deskripsi" class="form-textarea"></textarea></td>
+                    <td><textarea name="deskripsi" id="deskripsi" class="form-textarea"><?= isset($_POST['deskripsi']) ? $_POST['deskripsi'] : '' ?></textarea></td>
                 </tr>
                 <tr>
                     <td>Langkah</td>
-                    <td><textarea name="step" id="step" class="form-textarea"></textarea></td>
+                    <td><textarea name="step" id="step" class="form-textarea"><?= isset($_POST['step']) ? $_POST['step'] : '' ?></textarea></td>
                 </tr>
                 <tr>
                     <td>Gambar</td>
@@ -114,7 +147,9 @@
                 </tr>
                 <tr>
                     <td>Link Video</td>
-                    <td><input type="text" name="video" id="video" class="form-text"></td>
+                    <td><input type="text" name="video" id="video" class="form-text" onkeyup="validateVideo()" value= "<?= isset($_POST['video']) ? $_POST['video'] : '' ?>">
+                    <p id="lblVideo"></p>
+                    </td>
                 </tr>
                 <tr>
                     <td><a href="crud.php"><< Back</a></td>
@@ -123,13 +158,34 @@
             </form>
         </div>
     </table>
-
+    
+    <footer>
+        <!-- <img src="images/logo-black.png" alt="logo"> -->
+        <div class="icon">
+            <i class="fa fa-facebook fa-2x"></i>
+            <i class="fa fa-twitter fa-2x"></i>
+            <i class="fa fa-instagram fa-2x"></i>
+            <i class="fa fa-whatsapp fa-2x"></i>
+        </div>
+        <div class="footer-menu">
+            <ul>
+                <li><a href="#">Workout Videos</a></li>
+                <li><a href="#">Instructor</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+        <div class="caption-footer">
+            <h3>Sehat Dulu</h3>
+            <p>Let's go workout at home | All Rights Reserved</p>
+        </div>
+    </footer>
 </body>
-<script src="js/add.js?v=1"></script>
+<?php $rand = rand(0,9) ?>
+<script src="js/add.js?<?= $rand ?>"></script>
 </html>
 
 <?php
-    if(isset($_POST['submit'])){
+    if(isset($_POST['submit']) && isset($_POST['nama_olahraga']) && isset($_POST['durasi']) && isset($_POST['comboTipe']) && isset($_POST['comboKesulitan']) && isset($_POST['comboInstruktur']) && isset($_POST['alat']) && isset($_POST['deskripsi']) && isset($_POST['step']) && $_FILES['gambar']['name'] != "" && isset($_POST['video'])){
         $olahraga = $_POST['nama_olahraga'];
         $durasi = $_POST['durasi'];
         $desc = $_POST['deskripsi'];
@@ -138,7 +194,7 @@
         $kesulitan = $_POST['comboKesulitan'];
         $gambar = "";
         $step = $_POST['step'];
-        $alat = $_POST['comboAlat'];
+        $alat = $_POST['alat'];
         $instruktur = $_POST["comboInstruktur"];
 
         if(isset($_FILES["gambar"]["name"])){
@@ -153,7 +209,7 @@
             }
         }
 
-        $sql = "INSERT INTO olahraga VALUES ('','$olahraga',$durasi,'$desc','$vid',$tipe,$kesulitan,'$gambar','$step','$instruktur')";
+        $sql = "INSERT INTO olahraga VALUES ('','$olahraga',$durasi,'$desc','$vid',$tipe,$kesulitan,'$gambar','$step','$instruktur','$alat')";
         $id_olahraga = 0;
 
         if(mysqli_query($conn,$sql)){
@@ -162,12 +218,12 @@
             echo "Gagal menambahkan data<br>";
         }
         
-        $query = mysqli_query($conn,"SELECT id_olahraga FROM olahraga WHERE nama_olahraga LIKE '$olahraga%'");
-        $id_olahraga = mysqli_fetch_assoc($query)["id_olahraga"];
-        echo $id_olahraga;
-        foreach($alat as $id_alat){
-            $sqlAlat = "INSERT INTO detail_peralatan VALUES('','$id_olahraga','$id_alat')";
-            mysqli_query($conn,$sqlAlat);
-        }
+        // $query = mysqli_query($conn,"SELECT id_olahraga FROM olahraga WHERE nama_olahraga LIKE '$olahraga%'");
+        // $id_olahraga = mysqli_fetch_assoc($query)["id_olahraga"];
+        // echo $id_olahraga;
+        // foreach($alat as $id_alat){
+        //     $sqlAlat = "INSERT INTO detail_peralatan VALUES('','$id_olahraga','$id_alat')";
+        //     mysqli_query($conn,$sqlAlat);
+        // }
     }
 ?>

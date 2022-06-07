@@ -7,16 +7,24 @@ var comboKesulitan = document.getElementById("comboKesulitan");
 var comboInstruktur = document.getElementById("comboInstruktur");
 var step = document.getElementById("step");
 var gambar = document.getElementById("gambar");
-var alat = document.getElementsByClassName("alat");
+var alat = document.getElementById("alat");
 
 function validation(){
-    let checked = false;
-    for(let ch of alat){
-        if(ch.checked){
-            checked = true;
-        }
-    }
-    if (nama.value==="" || durasi.value==="" || deskripsi.value==="" || video.value==="" || tipe.value==="" || comboKesulitan.value==="" || comboInstruktur.value==="" || step.value==="" || checked===false || gambar.value===""){
+    if (nama.value==="" || durasi.value==="" || deskripsi.value==="" || video.value==="" || tipe.value==="" || comboKesulitan.value==="" || comboInstruktur.value==="" || step.value==="" || alat.value==="" || gambar.value===""){
         alert("Terdapat salah satu kolom yang kosong !");
+    }else{
+        nama.value = nama.value
+
+    }
+}
+
+function validateVideo(){
+    var lblVideo = document.getElementById("lblVideo");
+    let regex = /https:\/\/www\.youtube\.com\/\embed.*/;
+    if(regex.test(video.value)){
+        lblVideo.innerHTML = "*Video Valid";
+    }
+    else{
+        lblVideo.innerHTML = "*Video Tidak Valid. Video harus embeded YouTube";
     }
 }

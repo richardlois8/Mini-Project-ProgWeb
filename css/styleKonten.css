@@ -154,7 +154,8 @@ div.bottom-content{
 }
 
 .desc{
-    float : left;
+    /* float : left; */
+    display: block;
 }
 
 .step{
@@ -177,8 +178,21 @@ div.bottom-content{
     margin-right: 30px;
 }
 
-.alat{
+/* .alat{
     margin-top: 30px;
+} */
+
+#titleAlat{
+    margin-bottom: 0px;
+}
+
+ul{
+    margin: 2px;
+}
+
+table td h3{
+    margin: 0px;
+    display: inline;
 }
 
 footer{

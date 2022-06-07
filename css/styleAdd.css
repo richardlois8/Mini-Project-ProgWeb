@@ -54,13 +54,13 @@ header{
     padding-top: 80px;
 }
 
-tr:nth-child(10){
+tr:nth-child(11){
     text-align: right;
 }
 
 table{
     margin: auto;
-    width: 31.3%;
+    /* width: 31.3%; */
 }
 
 .form-textarea{
@@ -75,4 +75,55 @@ table{
 
 table td{
     padding: 8px;
+    vertical-align: top;
+}
+
+#lblAlat,#lblVideo{
+    margin: 3px 0px 0px 0px;
+    font-size: 13px;
+    color: red;
+}
+
+footer{
+    background-color: black;
+    height: max-content;
+}
+
+footer i{
+    color: white;
+    margin: 0px 15px;
+    margin-top: 30px;
+}
+
+.icon{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.footer-menu{
+    text-align: center;
+}
+
+.footer-menu ul{
+    display: inline-table;
+}
+
+footer li{
+    float: left;
+    margin-right: 30px;
+    display: inline;
+}
+
+.caption-footer{
+    text-align: center;
+    color: black;
+    font-size: smaller;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #e8eff7;
+}
+
+.caption-footer h3,p{
+    margin: 0;
+    padding: 0;
 }

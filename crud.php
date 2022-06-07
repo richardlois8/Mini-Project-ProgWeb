@@ -6,13 +6,12 @@
         header("Location: index.php");
     }
 
-    $sql = "SELECT olahraga.id_olahraga,nama_olahraga,durasi,tipe_olahraga,tingkat_kesulitan,nama_instruktur,nama_peralatan,deskripsi,step,image,video
+    $sql = "SELECT olahraga.id_olahraga,nama_olahraga,durasi,tipe_olahraga,tingkat_kesulitan,nama_instruktur,deskripsi,step,image,video,alat
     FROM olahraga
     JOIN kesulitan k on k.id_kesulitan = olahraga.id_kesulitan
     JOIN instruktur i on olahraga.id_instruktur = i.id_instruktur
     JOIN tipe_olahraga t on t.id_tipe = olahraga.id_tipe
-    JOIN detail_peralatan dp on olahraga.id_olahraga = dp.id_olahraga
-    JOIN peralatan p on p.id_peralatan = dp.id_alat ORDER BY nama_olahraga;";
+    ORDER BY nama_olahraga;";
     $result = query($sql);
 ?>
 

@@ -2,12 +2,11 @@
 require("functions.php");
 if($_GET){
     // $allResult = query("SELECT * FROM olahraga WHERE nama_olahraga LIKE '%".$_GET['name']."%'");
-    $allResult = query("SELECT nama_olahraga,video,tingkat_kesulitan,durasi,tipe_olahraga,nama_instruktur,nama_peralatan,deskripsi,step FROM olahraga
+    $allResult = query("SELECT nama_olahraga,video,tingkat_kesulitan,durasi,tipe_olahraga,nama_instruktur,deskripsi,step,alat FROM olahraga
     join kesulitan k on k.id_kesulitan = olahraga.id_kesulitan
     join tipe_olahraga t on t.id_tipe = olahraga.id_tipe
-    join detail_peralatan dp on olahraga.id_olahraga = dp.id_olahraga
     join instruktur i on olahraga.id_instruktur = i.id_instruktur
-    join peralatan p on dp.id_alat = p.id_peralatan WHERE olahraga.nama_olahraga LIKE '%".$_GET['name']."%'");
+    WHERE olahraga.nama_olahraga LIKE '%".$_GET['name']."%'");
     $result = $allResult[0];
 }
 ?>
@@ -48,13 +47,36 @@ if($_GET){
                         <h3>Durasi: <span><?=$result["durasi"]." menit" ?></span></h3>
                         <h3>Tipe Olahraga: <span><?= $result["tipe_olahraga"]  ?></span></h3>
                         <h3>Instruktur: <span><?= $result["nama_instruktur"]  ?></span></h3>
-                        <h3>Alat</h3>
-                        <ul>
-                            <li><h3><span><?= $result["nama_peralatan"]  ?></span></h3></li>
-                        </ul>
-                        <!-- <ul>
-                            <li><h3><span>Matras Tipis</span></h3></li>
-                        </ul> -->
+                        <h3 id="titleAlat">Alat</h3>
+                        <table>
+                            <ul>
+                                <?php
+                                    $alat = explode(",", $result["alat"]);
+                                    if(count($alat) % 2 == 0){
+                                        for($i=0;$i<count($alat);$i+=2){
+                                            echo "<tr>";
+                                            echo "<td><li><h3><span>".$alat[$i]."</span></h3></li></td>";
+                                            echo "<td><li><h3><span>".$alat[$i+1]."</span></h3></li></td>";
+                                            echo "</tr>";
+                                        }
+                                    }
+                                    else{
+                                        for($i=0; $i<count($alat); $i+=2){
+                                            echo "<tr>";
+                                            if(isset($alat[$i+1])){
+                                                echo "<td><li><h3><span>".$alat[$i]."</span></h3></li></td>";
+                                                echo "<td><li><h3><span>".$alat[$i+1]."</span></h3></li></td>";
+                                            }
+                                            else {
+                                                echo "<td><li><h3><span>".$alat[$i]."</span></h3></li></td>";
+                                            }
+                                            echo "</tr>";
+                                        }
+                                    }
+                                    
+                                    ?>
+                            </ul>
+                        </table>
                     </div>
                 </div>
             </div>
