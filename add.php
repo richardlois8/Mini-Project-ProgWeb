@@ -40,7 +40,9 @@
                 </tr>
                 <tr>
                     <td>Durasi</td>
-                    <td><input type="number" name="durasi" id="durasi" class="form-text" value= "<?= isset($_POST['durasi']) ? $_POST['durasi'] : '' ?>"></td>
+                    <td><input type="number" name="durasi" id="durasi" class="form-text" value= "<?= isset($_POST['durasi']) ? $_POST['durasi'] : '' ?>" onchange="validateDurasi()">
+                    <p id="lblDurasi"></p>
+                    </td>
                 </tr>
                 <tr>
                     <td>Tipe Olahraga</td>
@@ -142,8 +144,12 @@
                     <td><textarea name="step" id="step" class="form-textarea"><?= isset($_POST['step']) ? $_POST['step'] : '' ?></textarea></td>
                 </tr>
                 <tr>
+                    <!-- <td>Gambar</td>
+                    <td><input type="file" name="gambar" id="gambar" accept="image/png, image/jpeg"></td> -->
                     <td>Gambar</td>
-                    <td><input type="file" name="gambar" id="gambar" accept="image/png, image/jpeg"></td>
+                    <td><img hidden id="previewImage" src="" alt="" width="100px" height="100px">
+                        <input type="file" name="gambar" id="gambar" accept="image/png, image/jpeg" style="display:block;   ">
+                    </td>
                 </tr>
                 <tr>
                     <td>Link Video</td>

@@ -14,6 +14,7 @@
         $sql = "SELECT * FROM olahraga WHERE id_olahraga = '$id' LIMIT 1";
         $result = mysqli_query($conn,$sql);
         $hasil = mysqli_fetch_assoc($result);
+        // $_FILES['gambar']['name'] = $hasil['image'];
     }
 ?>
 
@@ -50,7 +51,9 @@
                 
                 <tr>
                     <td>Durasi</td>
-                    <td><input type="text" name="durasi" id="durasi" class="form-text" value= "<?= isset($_POST['durasi']) ? $_POST['durasi'] : $hasil["durasi"] ?>"></td>
+                    <td><input type="text" name="durasi" id="durasi" class="form-text" value= "<?= isset($_POST['durasi']) ? $_POST['durasi'] : $hasil["durasi"] ?>" onchange="validateDurasi()">
+                    <p id="lblDurasi"></p>
+                    </td>
                 </tr>
 
                 <tr>
@@ -158,7 +161,9 @@
 
                 <tr>
                     <td>Gambar</td>
-                    <td><input type="file" name="gambar" id="gambar" accept="image/png, image/jpeg"></td>
+                    <td><img id="previewImage" src="images/workout/<?= $hasil['image']?>" alt="<?= $hasil['image'] ?>" width="100px" height="100px"> <br>
+                        <input type="file" name="gambar" id="gambar" accept="image/png, image/jpeg" value="images/workout/<?= $hasil['image']?>">
+                    </td>
                 </tr>
 
                 <tr>
@@ -214,8 +219,11 @@
 
         mysqli_query($conn,"SET FOREIGN_KEY_CHECKS=0;");
 
-        $sql = "UPDATE olahraga SET nama_olahraga='$olahraga',durasi='$durasi',deskripsi='$desc',video='$vid',id_tipe='$tipe',id_kesulitan='$kesulitan',image='$newGambar',step='$step',id_instruktur='$instruktur',alat='$alat' WHERE id_olahraga='$id'";
-        if(mysqli_query($conn,$sql)){
+        $sqlUpdateAll = "UPDATE olahraga SET nama_olahraga='$olahraga',durasi='$durasi',deskripsi='$desc',video='$vid',id_tipe='$tipe',id_kesulitan='$kesulitan',image='$newGambar',step='$step',id_instruktur='$instruktur',alat='$alat' WHERE id_olahraga='$id'";
+        $sqlUpdateexPic = "UPDATE olahraga SET nama_olahraga='$olahraga',durasi='$durasi',deskripsi='$desc',video='$vid',id_tipe='$tipe',id_kesulitan='$kesulitan',step='$step',id_instruktur='$instruktur',alat='$alat' WHERE id_olahraga='$id'";
+
+        $executeSql = $newGambar == "" ? $sqlUpdateexPic : $sqlUpdateAll;
+        if(mysqli_query($conn,$executeSql)){
             echo "<script>alert('Berhasil mengubah data');window.location.href='crud.php';</script>";
         }
         else{

@@ -76,6 +76,10 @@ table td {
     padding: 12px 15px;
 }
 
+table th{
+    text-align: center;
+}
+
 table tbody tr {
     border-bottom: 1px solid #dddddd;
 }
@@ -91,6 +95,10 @@ table tbody tr:last-of-type {
 table tbody tr.active-row {
     font-weight: bold;
     color: #009879;
+}
+
+table th:nth-child(8), table td:nth-child(8){
+    
 }
 
 footer{

@@ -52,11 +52,11 @@
                 <th>Tipe</th>
                 <th>Kesulitan</th>
                 <th>Instruktur</th>
-                <th>Peralatan</th>
                 <th>Deskripsi</th>
                 <th>Langkah</th>
                 <th>Gambar</th>
                 <th>Video</th>
+                <th>Peralatan</th>
                 <th colspan="2">Action</th>
             </thead>
             <?php

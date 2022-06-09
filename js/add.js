@@ -28,3 +28,27 @@ function validateVideo(){
         lblVideo.innerHTML = "*Video Tidak Valid. Video harus embeded YouTube";
     }
 }
+
+function validateDurasi(){
+    let lblDurasi = document.getElementById("lblDurasi");
+    let durasi = document.getElementById("durasi").value;
+    if(durasi.includes("-") || durasi === "0"){
+        lblDurasi.innerHTML = "*Durasi tidak boleh negatif atau 0";
+    }else{
+        lblDurasi.innerHTML = "*Durasi valid "
+    }
+}
+
+function previewImage(){
+    let img = document.getElementById("previewImage");
+    document.querySelector("#gambar").addEventListener("change",function(e){
+        if(e.target.files.length == 0){
+            return;
+        }
+        let file = e.target.files[0];
+        let url = URL.createObjectURL(file);
+        img.src = url;
+        img.removeAttribute("hidden");
+    });
+}
+previewImage();

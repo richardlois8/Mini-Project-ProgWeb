@@ -78,7 +78,7 @@ table td{
     vertical-align: top;
 }
 
-#lblAlat,#lblVideo{
+#lblAlat,#lblVideo,#lblDurasi{
     margin: 3px 0px 0px 0px;
     font-size: 13px;
     color: red;
