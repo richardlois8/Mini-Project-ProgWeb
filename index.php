@@ -31,7 +31,6 @@
             <div class="top-left">
                 <h2>Dapatkan tubuh ideal <br>Dimulai dari rutinitas<br>Mudah dilakukan dari rumah Anda</h2>
                 <h4>Punya tubuh ideal bukan lagi sebuah Impian!<br>Mulailah bentuk tubuh Anda hari ini</h4>
-                <!-- <h3>Cari latihan yang cocok untuk Anda</h3> -->
                 
                 <!-- bikin form buat search -->
                 <div class="search">
@@ -40,6 +39,43 @@
                         <button type="search" id="search-button" name="search">
                             <a href="#result"><i class="fa fa-search"></i></a>
                         </button>
+
+                        <select name="comboKesulitan" id="comboKesulitan">
+                        <option selected hidden disabled>Tingkat Kesulitan</option>
+                            <?php
+                                $query = "SELECT * FROM kesulitan";
+                                $result = mysqli_query($conn,$query);
+
+                                $counter2 = 1;
+                                $newIdKesulitan = isset($_POST['comboKesulitan']) ? $_POST['comboKesulitan'] : '';
+                                while($row = mysqli_fetch_assoc($result)){
+                                    if(intval($newIdKesulitan) == $counter2){
+                                        echo "<option selected value = '". $row['id_kesulitan']. "'>". $row['tingkat_kesulitan']. "</option>";
+                                    }else{
+                                        echo "<option value = '". $row['id_kesulitan']. "'>". $row['tingkat_kesulitan']. "</option>";
+                                    }
+                                    $counter2+=1;
+                                }
+                            ?>
+                        </select>
+                        <select name="comboTipe" id="comboTipe">
+                        <option selected hidden disabled>Tipe Olahraga</option>
+                            <?php
+                                $query = "SELECT * FROM tipe_olahraga ORDER BY tipe_olahraga ASC";
+                                $result = mysqli_query($conn,$query);
+
+                                $counter1 = 1;
+                                $newIdTipe = isset($_POST['comboTipe']) ? $_POST['comboTipe'] : '';
+                                while($row = mysqli_fetch_assoc($result)){
+                                    if(intval($newIdTipe) == $counter1){
+                                        echo "<option selected value = '". $row['id_tipe']. "'>". $row['tipe_olahraga'] . "</option>";
+                                    }else{
+                                        echo "<option value = '". $row['id_tipe']. "'>". $row['tipe_olahraga']. "</option>";
+                                    }
+                                    $counter1 += 1;
+                                }
+                            ?>
+                        </select>
                     </form>        
                 </div>
             </div>
@@ -67,7 +103,16 @@
                     $contents = query("SELECT nama_olahraga,image FROM olahraga");
 
                     if(isset($_POST["search"]) && $_POST["keyword"] != ""){
-                        $contents = cari($_POST["keyword"]);
+                        if(isset($_POST['comboKesulitan']) && isset($_POST['comboTipe'])){
+                            $contents = advSearch($_POST['keyword'],$_POST['comboKesulitan'],$_POST['comboTipe']);
+                        // }else if($_POST['comboKesulitan'] != ''){
+                        //     $contents = advSearch($_POST['keyword'],$_POST['comboKesulitan']);
+                        // }else if($_POST['comboTipe'] != ''){
+                        //     $contents = advSearch($_POST['keyword'],$_POST['comboTipe']);
+                        }else{
+                            $contents = cari($_POST["keyword"]);
+                        }
+
                         foreach($contents as $content){
                             echo "<tr>";
                             echo '<div class="search-content">';

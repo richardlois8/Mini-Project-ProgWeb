@@ -148,7 +148,7 @@
                     <td><input type="file" name="gambar" id="gambar" accept="image/png, image/jpeg"></td> -->
                     <td>Gambar</td>
                     <td><img hidden id="previewImage" src="" alt="" width="100px" height="100px">
-                        <input type="file" name="gambar" id="gambar" accept="image/png, image/jpeg" style="display:block;   ">
+                        <input type="file" name="gambar" id="gambar" accept="image/png, image/jpeg" style="display:block;">
                     </td>
                 </tr>
                 <tr>
@@ -187,11 +187,11 @@
     </footer>
 </body>
 <?php $rand = rand(0,9) ?>
-<script src="js/add.js?<?= $rand ?>"></script>
+<script src="js/addEdit.js?<?= $rand ?>"></script>
 </html>
 
 <?php
-    if(isset($_POST['submit']) && isset($_POST['nama_olahraga']) && isset($_POST['durasi']) && isset($_POST['comboTipe']) && isset($_POST['comboKesulitan']) && isset($_POST['comboInstruktur']) && isset($_POST['alat']) && isset($_POST['deskripsi']) && isset($_POST['step']) && $_FILES['gambar']['name'] != "" && isset($_POST['video'])){
+    if(isset($_POST['submit']) && isset($_POST['nama_olahraga']) && isset($_POST['durasi']) && isset($_POST['comboTipe']) && isset($_POST['comboKesulitan']) && isset($_POST['comboInstruktur']) && isset($_POST['alat']) && $_POST['deskripsi'] != "" && $_POST['step'] != "" && $_FILES['gambar']['name'] != "" && isset($_POST['video'])){
         $olahraga = $_POST['nama_olahraga'];
         $durasi = $_POST['durasi'];
         $desc = $_POST['deskripsi'];
@@ -209,9 +209,9 @@
             
             $uploadfile = "images/workout/" . $gambar;
             if(move_uploaded_file($_FILES["gambar"]["tmp_name"], $uploadfile)){
-                echo "Sukses mengupload foto<br>";
+                // echo "Sukses mengupload foto<br>";
             }else{
-                echo "Gagal mengupload foto<br>";
+                // echo "Gagal mengupload foto<br>";
             }
         }
 
@@ -219,9 +219,11 @@
         $id_olahraga = 0;
 
         if(mysqli_query($conn,$sql)){
-            echo "Berhasil menambahkan data<br>";
+            // echo "Berhasil menambahkan data<br>";
+            // header_remove();
+            echo "<script>window.location.href = 'crud.php'</script>";
         }else{
-            echo "Gagal menambahkan data<br>";
+            echo "<script>alert('Gagal menambahkan data')</script><br>";
         }
         
         // $query = mysqli_query($conn,"SELECT id_olahraga FROM olahraga WHERE nama_olahraga LIKE '$olahraga%'");

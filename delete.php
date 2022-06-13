@@ -19,7 +19,7 @@
         $sqlDelOlahraga = mysqli_query($conn,"DELETE FROM olahraga WHERE id_olahraga = $id");
         if($sqlDelOlahraga){
             unlink("images/workout/".$namaFIle);
-            header("location:'crud.php'");
+            header("location:crud.php");
         }
     }
 ?>

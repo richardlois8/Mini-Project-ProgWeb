@@ -80,7 +80,7 @@
                     echo "</td>";
 
                     echo "<td>";
-                    echo "<a href='delete.php?id=".$result[$i]['id_olahraga']."' onclick=\"return confirm('apakah anda yakin?')\" >Delete</a>";
+                    echo "<a href='delete.php?id=".$result[$i]['id_olahraga']."' onclick=\"return confirm('Apakah anda yakin menghapus olahraga ".$result[$i]['nama_olahraga']."?')\" >Delete</a>";
                     echo "</td>";
                     echo "</tr>";
                 }

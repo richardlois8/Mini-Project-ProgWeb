@@ -71,9 +71,13 @@ table thead tr {
     text-align: left;
 }
 
-table th,
+table th{
+    padding: 10px;
+}
+
 table td {
-    padding: 12px 15px;
+    padding:30px 5px 30px 5px;
+    text-align: justify;
 }
 
 table th{
@@ -97,9 +101,9 @@ table tbody tr.active-row {
     color: #009879;
 }
 
-table th:nth-child(8), table td:nth-child(8){
+/* table th:nth-child(8), table td:nth-child(8){
     
-}
+} */
 
 footer{
     background-color: black;

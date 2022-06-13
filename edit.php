@@ -6,6 +6,7 @@
     if(!isset($_SESSION['userLogin']) || $_SESSION['userLogin'] == ""){
         header("Location: index.php");
     }
+    $oldGambar = $_SESSION['oldImg'];
 ?>
 
 <?php 
@@ -15,6 +16,7 @@
         $result = mysqli_query($conn,$sql);
         $hasil = mysqli_fetch_assoc($result);
         // $_FILES['gambar']['name'] = $hasil['image'];
+        $_SESSION['oldImg'] = $hasil['image'];
     }
 ?>
 
@@ -161,8 +163,8 @@
 
                 <tr>
                     <td>Gambar</td>
-                    <td><img id="previewImage" src="images/workout/<?= $hasil['image']?>" alt="<?= $hasil['image'] ?>" width="100px" height="100px"> <br>
-                        <input type="file" name="gambar" id="gambar" accept="image/png, image/jpeg" value="images/workout/<?= $hasil['image']?>">
+                    <td><img id="previewImage" src="images/workout/<?= $oldGambar?>" alt="<?= $oldGambar ?>" width="100px" height="100px"> <br>
+                        <input type="file" name="gambar" id="gambar" accept="image/png, image/jpeg" value="images/workout/<?= $oldGambar?>">
                     </td>
                 </tr>
 
@@ -173,7 +175,7 @@
 
                 <tr>
                     <td><a href="crud.php"><< Back</a></td>
-                    <td><input type="submit" name = "submit" value="Submit" onclick="validation()"></td>
+                    <td><input type="submit" name = "submit" value="Submit" onclick="validationEdit()"></td>
                 </tr>
             </form>
         </div>
@@ -181,11 +183,11 @@
 
 </body>
 <?php $rand = rand(0,9) ?>
-<script src="js/add.js?<?= $rand ?>"></script>
+<script src="js/addEdit.js?<?= $rand ?>"></script>
 </html>
 
 <?php
-    if(isset($_POST["id"]) && isset($_POST['submit']) && isset($_POST['nama_olahraga']) && isset($_POST['durasi']) && isset($_POST['comboTipe']) && isset($_POST['comboKesulitan']) && isset($_POST['comboInstruktur']) && isset($_POST['alat']) && isset($_POST['deskripsi']) && isset($_POST['step']) && $_FILES['gambar']["name"] != "" && isset($_POST['video'])){
+    if(isset($_POST["id"]) && isset($_POST['submit']) && isset($_POST['nama_olahraga']) && isset($_POST['durasi']) && isset($_POST['comboTipe']) && isset($_POST['comboKesulitan']) && isset($_POST['comboInstruktur']) && isset($_POST['alat']) && isset($_POST['deskripsi']) && isset($_POST['step']) && isset($_POST['video'])){
         // update
         $id = $_POST["id"];
         $olahraga = $_POST['nama_olahraga'];
@@ -198,14 +200,8 @@
         $step = $_POST['step'];
         $alat = $_POST['alat'];
         $instruktur = $_POST["comboInstruktur"];
-
-        $sqlNamaFile = mysqli_query($conn,"SELECT image FROM olahraga WHERE id_olahraga = $id");
-        $namaFile = mysqli_fetch_assoc($sqlNamaFile)["image"];
-        if($sqlNamaFile){
-            unlink("images/workout/".$namaFile);
-        }
         
-        if(isset($_FILES["gambar"]["name"])){
+        if($_FILES["gambar"]["name"] != ""){
             $ekstensi = explode(".",$_FILES["gambar"]["name"]);
             $newGambar = $olahraga . "." . $ekstensi[1];
             
@@ -219,11 +215,11 @@
 
         mysqli_query($conn,"SET FOREIGN_KEY_CHECKS=0;");
 
-        $sqlUpdateAll = "UPDATE olahraga SET nama_olahraga='$olahraga',durasi='$durasi',deskripsi='$desc',video='$vid',id_tipe='$tipe',id_kesulitan='$kesulitan',image='$newGambar',step='$step',id_instruktur='$instruktur',alat='$alat' WHERE id_olahraga='$id'";
-        $sqlUpdateexPic = "UPDATE olahraga SET nama_olahraga='$olahraga',durasi='$durasi',deskripsi='$desc',video='$vid',id_tipe='$tipe',id_kesulitan='$kesulitan',step='$step',id_instruktur='$instruktur',alat='$alat' WHERE id_olahraga='$id'";
+        $sql = "UPDATE olahraga SET nama_olahraga='$olahraga',durasi='$durasi',deskripsi='$desc',video='$vid',id_tipe='$tipe',id_kesulitan='$kesulitan',image='$oldGambar',step='$step',id_instruktur='$instruktur',alat='$alat' WHERE id_olahraga='$id'";
+        // $sqlUpdateexPic = "UPDATE olahraga SET nama_olahraga='$olahraga',durasi='$durasi',deskripsi='$desc',video='$vid',id_tipe='$tipe',id_kesulitan='$kesulitan',step='$step',id_instruktur='$instruktur',alat='$alat' WHERE id_olahraga='$id'";
 
-        $executeSql = $newGambar == "" ? $sqlUpdateexPic : $sqlUpdateAll;
-        if(mysqli_query($conn,$executeSql)){
+        // $executeSql = $newGambar == "" ? $sqlUpdateexPic : $sqlUpdateAll;
+        if(mysqli_query($conn,$sql)){
             echo "<script>alert('Berhasil mengubah data');window.location.href='crud.php';</script>";
         }
         else{
@@ -233,4 +229,4 @@
         mysqli_query($conn,"SET FOREIGN_KEY_CHECKS=1;");
     }
     mysqli_close($conn);
-    ?>
+?>

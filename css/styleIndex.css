@@ -87,7 +87,7 @@ main{
     margin-top: 50px;
 }
 
-#search-box{
+#search-box,#comboTipe, #comboKesulitan{
     /* width: 60%; */
     border: 3px solid #3f38a3;
     border-right: none;
@@ -219,6 +219,7 @@ main{
 }
 
 .search-content img{
+    height: 300px;
     width: 300px;
     margin: 0px 0px 0px 40px;
     border-radius: 50%;
