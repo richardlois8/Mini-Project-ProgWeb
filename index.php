@@ -84,12 +84,12 @@
                         // Untuk pencarian berdasarkan nama olahraga, tipe, tingkat kesulitan
                         if(isset($_POST['keyword']) && isset($_POST['comboKesulitan']) && isset($_POST['comboTipe'])){
                             $contents = advSearch($_POST['keyword'],$_POST['comboKesulitan'],$_POST['comboTipe']);
-                        // Untuk pencarian hanya berdasarkan combo box tipe dan kolom search kosong
-                        }else if($_POST['keyword'] == "" && isset($_POST['comboKesulitan'])){
-                            $contents = normalSearch($_POST["comboKesulitan"]);
                         // Untuk pencarian hanya berdasarkan combo box kesulitan dan kolom search kosong
+                        }else if($_POST['keyword'] == "" && isset($_POST['comboKesulitan'])){
+                            $contents = advSearch("",$_POST["comboKesulitan"],"");
+                        // Untuk pencarian hanya berdasarkan combo box tipe dan kolom search kosong
                         }else if($_POST['keyword'] == "" && isset($_POST['comboTipe'])){
-                            $contents = normalSearch($_POST["comboTipe"]);
+                            $contents = advSearch("","",$_POST["comboTipe"]);
                         // Untuk pencarian hanya berdasarkan kolom search dan combo box kesulitan
                         }else if($_POST['keyword'] != "" && isset($_POST['comboKesulitan'])){
                             $contents = advSearch($_POST['keyword'],$_POST['comboKesulitan'],'');
