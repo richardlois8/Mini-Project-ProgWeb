@@ -39,43 +39,21 @@
                         <button type="search" id="search-button" name="search">
                             <a href="#result"><i class="fa fa-search"></i></a>
                         </button>
+                        
+                        <select name="comboTipe" id="comboTipe">
+                            <option selected hidden disabled>Tipe Olahraga</option>
+                            <option value="1">Hiit</option>
+                            <option value="2">Yoga</option>
+                            <option value="3">Cardio</option>
+                        </select>
 
                         <select name="comboKesulitan" id="comboKesulitan">
-                        <option selected hidden disabled>Tingkat Kesulitan</option>
-                            <?php
-                                $query = "SELECT * FROM kesulitan";
-                                $result = mysqli_query($conn,$query);
-
-                                $counter2 = 1;
-                                $newIdKesulitan = isset($_POST['comboKesulitan']) ? $_POST['comboKesulitan'] : '';
-                                while($row = mysqli_fetch_assoc($result)){
-                                    if(intval($newIdKesulitan) == $counter2){
-                                        echo "<option selected value = '". $row['id_kesulitan']. "'>". $row['tingkat_kesulitan']. "</option>";
-                                    }else{
-                                        echo "<option value = '". $row['id_kesulitan']. "'>". $row['tingkat_kesulitan']. "</option>";
-                                    }
-                                    $counter2+=1;
-                                }
-                            ?>
+                            <option selected hidden disabled>Tingkat Kesulitan</option>
+                            <option value="1">Beginner</option>
+                            <option value="2">Intermediate</option>
+                            <option value="3">Advance</option>
                         </select>
-                        <select name="comboTipe" id="comboTipe">
-                        <option selected hidden disabled>Tipe Olahraga</option>
-                            <?php
-                                $query = "SELECT * FROM tipe_olahraga ORDER BY tipe_olahraga ASC";
-                                $result = mysqli_query($conn,$query);
 
-                                $counter1 = 1;
-                                $newIdTipe = isset($_POST['comboTipe']) ? $_POST['comboTipe'] : '';
-                                while($row = mysqli_fetch_assoc($result)){
-                                    if(intval($newIdTipe) == $counter1){
-                                        echo "<option selected value = '". $row['id_tipe']. "'>". $row['tipe_olahraga'] . "</option>";
-                                    }else{
-                                        echo "<option value = '". $row['id_tipe']. "'>". $row['tipe_olahraga']. "</option>";
-                                    }
-                                    $counter1 += 1;
-                                }
-                            ?>
-                        </select>
                     </form>        
                 </div>
             </div>
@@ -102,15 +80,17 @@
                 <?php  
                     $contents = query("SELECT nama_olahraga,image FROM olahraga");
 
-                    if(isset($_POST["search"]) && $_POST["keyword"] != ""){
-                        if(isset($_POST['comboKesulitan']) && isset($_POST['comboTipe'])){
+                    if(isset($_POST["search"])){
+                        if(isset($_POST['keyword']) && isset($_POST['comboKesulitan']) && isset($_POST['comboTipe'])){
                             $contents = advSearch($_POST['keyword'],$_POST['comboKesulitan'],$_POST['comboTipe']);
-                        // }else if($_POST['comboKesulitan'] != ''){
-                        //     $contents = advSearch($_POST['keyword'],$_POST['comboKesulitan']);
-                        // }else if($_POST['comboTipe'] != ''){
-                        //     $contents = advSearch($_POST['keyword'],$_POST['comboTipe']);
+                        }else if(isset($_POST['keyword']) && isset($_POST['comboKesulitan'])){
+                            $contents = advSearch($_POST['keyword'],$_POST['comboKesulitan'],'');
+                        }else if(isset($_POST['keyword']) && isset($_POST['comboTipe'])){
+                            $contents = advSearch($_POST['keyword'],'',$_POST['comboTipe']);
+                        }else if(isset($_POST['comboKesulitan']) && isset($_POST['comboTipe'])){
+                            $contents = advSearch('',$_POST['comboKesulitan'],$_POST['comboTipe']);
                         }else{
-                            $contents = cari($_POST["keyword"]);
+                            $contents = normalSearch($_POST["keyword"]);
                         }
 
                         foreach($contents as $content){
