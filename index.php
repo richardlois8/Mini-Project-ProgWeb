@@ -81,14 +81,25 @@
                     $contents = query("SELECT nama_olahraga,image FROM olahraga");
 
                     if(isset($_POST["search"])){
+                        // Untuk pencarian berdasarkan nama olahraga, tipe, tingkat kesulitan
                         if(isset($_POST['keyword']) && isset($_POST['comboKesulitan']) && isset($_POST['comboTipe'])){
                             $contents = advSearch($_POST['keyword'],$_POST['comboKesulitan'],$_POST['comboTipe']);
-                        }else if(isset($_POST['keyword']) && isset($_POST['comboKesulitan'])){
+                        // Untuk pencarian hanya berdasarkan combo box tipe dan kolom search kosong
+                        }else if($_POST['keyword'] == "" && isset($_POST['comboKesulitan'])){
+                            $contents = normalSearch($_POST["comboKesulitan"]);
+                        // Untuk pencarian hanya berdasarkan combo box kesulitan dan kolom search kosong
+                        }else if($_POST['keyword'] == "" && isset($_POST['comboTipe'])){
+                            $contents = normalSearch($_POST["comboTipe"]);
+                        // Untuk pencarian hanya berdasarkan kolom search dan combo box kesulitan
+                        }else if($_POST['keyword'] != "" && isset($_POST['comboKesulitan'])){
                             $contents = advSearch($_POST['keyword'],$_POST['comboKesulitan'],'');
-                        }else if(isset($_POST['keyword']) && isset($_POST['comboTipe'])){
+                        // Untuk pencarian hanya berdasarkan kolom search dan combo box tipe
+                        }else if($_POST['keyword'] != "" && isset($_POST['comboTipe'])){
                             $contents = advSearch($_POST['keyword'],'',$_POST['comboTipe']);
+                        // Untuk pencarian hanya berdasarkan combo box kesulitan dan combo box tipe dengan kolom search kosong
                         }else if(isset($_POST['comboKesulitan']) && isset($_POST['comboTipe'])){
                             $contents = advSearch('',$_POST['comboKesulitan'],$_POST['comboTipe']);
+                        // Untuk pencarian hanya berdasarkan kolom search
                         }else{
                             $contents = normalSearch($_POST["keyword"]);
                         }

@@ -13,7 +13,7 @@
 
     
     function normalSearch($keyword){
-        $sql = "SELECT nama_olahraga,tipe_olahraga,tingkat_kesulitan,deskripsi,image from olahraga Join kesulitan ON kesulitan.id_kesulitan = olahraga.id_kesulitan Join tipe_olahraga ON tipe_olahraga.id_tipe = olahraga.id_tipe WHERE tingkat_kesulitan LIKE '$keyword%' OR nama_olahraga LIKE'$keyword%' OR tipe_olahraga LIKE'$keyword%';";
+        $sql = "SELECT nama_olahraga,tipe_olahraga,tingkat_kesulitan,deskripsi,image from olahraga Join kesulitan ON kesulitan.id_kesulitan = olahraga.id_kesulitan Join tipe_olahraga ON tipe_olahraga.id_tipe = olahraga.id_tipe WHERE tingkat_kesulitan LIKE '$keyword%' OR nama_olahraga LIKE'$keyword%' OR tipe_olahraga LIKE'$keyword%' OR olahraga.id_tipe = '$keyword' OR olahraga.id_tipe = '$keyword';";
         return query($sql);
     }
 
