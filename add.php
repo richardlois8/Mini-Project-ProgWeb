@@ -26,7 +26,6 @@
         </div>
         <div class="header-right">
             <a href="index.php">Beranda</a>
-            <a href="latihan.php">Latihan</a>
             <a href="kontak.php">Kontak</a>
             <a href="index.php">Logout</a>
         </div>
@@ -55,15 +54,13 @@
                                 // while($row = mysqli_fetch_assoc($result)){
                                 //     echo "<option value = '". $row['id_tipe']. "'>". $row['tipe_olahraga']. "</option>";
                                 // }
-                                $counter1 = 1;
                                 $newIdTipe = isset($_POST['comboTipe']) ? $_POST['comboTipe'] : '';
                                 while($row = mysqli_fetch_assoc($result)){
-                                    if(intval($newIdTipe) == $counter1){
+                                    if(intval($newIdTipe) == $row['id_tipe']){
                                         echo "<option selected value = '". $row['id_tipe']. "'>". $row['tipe_olahraga'] . "</option>";
                                     }else{
                                         echo "<option value = '". $row['id_tipe']. "'>". $row['tipe_olahraga']. "</option>";
                                     }
-                                    $counter1 += 1;
                                 }
                             ?>
                         </select>
@@ -80,15 +77,13 @@
                                 // while($row = mysqli_fetch_assoc($result)){
                                 //     echo "<option value = '". $row['id_kesulitan']. "'>". $row['tingkat_kesulitan']. "</option>";
                                 // }
-                                $counter2 = 1;
                                 $newIdKesulitan = isset($_POST['comboKesulitan']) ? $_POST['comboKesulitan'] : '';
                                 while($row = mysqli_fetch_assoc($result)){
-                                    if(intval($newIdKesulitan) == $counter2){
+                                    if(intval($newIdKesulitan) == $row['id_kesulitan']){
                                         echo "<option selected value = '". $row['id_kesulitan']. "'>". $row['tingkat_kesulitan']. "</option>";
                                     }else{
                                         echo "<option value = '". $row['id_kesulitan']. "'>". $row['tingkat_kesulitan']. "</option>";
                                     }
-                                    $counter2+=1;
                                 }
                             ?>
                         </select>
@@ -105,15 +100,13 @@
                                 // while($row = mysqli_fetch_assoc($result)){
                                 //     echo "<option value = '". $row['id_instruktur']. "'>". $row['nama_instruktur']. "</option>";
                                 // }
-                                $counter3 = 1;
                                 $newIdInstruktur = isset($_POST['comboInstruktur']) ? $_POST['comboInstruktur'] : '';
                                 while($row = mysqli_fetch_assoc($result)){
-                                    if(intval($newIdInstruktur) == $counter3){
+                                    if(intval($newIdInstruktur) == $row['id_instruktur']){
                                         echo "<option selected value = '". $row['id_instruktur']. "'>". $row['nama_instruktur']. "</option>";
                                     }else{
                                         echo "<option value = '". $row['id_instruktur']. "'>". $row['nama_instruktur']. "</option>";
                                     }
-                                    $counter3+=1;
                                 }
                             ?>
                         </select>
@@ -216,22 +209,12 @@
         }
 
         $sql = "INSERT INTO olahraga VALUES ('','$olahraga',$durasi,'$desc','$vid',$tipe,$kesulitan,'$gambar','$step','$instruktur','$alat')";
-        $id_olahraga = 0;
 
         if(mysqli_query($conn,$sql)){
-            // echo "Berhasil menambahkan data<br>";
-            // header_remove();
             echo "<script>window.location.href = 'crud.php'</script>";
         }else{
             echo "<script>alert('Gagal menambahkan data')</script><br>";
+            echo msqli_error($conn);
         }
-        
-        // $query = mysqli_query($conn,"SELECT id_olahraga FROM olahraga WHERE nama_olahraga LIKE '$olahraga%'");
-        // $id_olahraga = mysqli_fetch_assoc($query)["id_olahraga"];
-        // echo $id_olahraga;
-        // foreach($alat as $id_alat){
-        //     $sqlAlat = "INSERT INTO detail_peralatan VALUES('','$id_olahraga','$id_alat')";
-        //     mysqli_query($conn,$sqlAlat);
-        // }
     }
 ?>

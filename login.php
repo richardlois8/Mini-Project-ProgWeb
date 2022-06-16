@@ -27,7 +27,7 @@
         </div>
         <div class="header-right">
             <a href="index.php">Beranda</a>
-            <a href="latihan.php">Latihan</a>
+            
             <a href="kontak.php">Kontak</a>
             <a href="login.php">Login</a>
         </div>
@@ -67,10 +67,12 @@
         </div>
     </footer>
 </body>
+<script src="js/login.js"></script>
 </html>
 
 <?php
-    if(isset($_POST["submit"])){
+var_dump($_POST);
+    if(isset($_POST["submit"]) && isset($_POST['username']) && isset($_POST['password'])){
         $username = $_POST['username'];
         $password = $_POST["password"];
         $sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password' LIMIT 1;";

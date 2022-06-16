@@ -12,12 +12,16 @@ var alat = document.getElementById("alat");
 function validation(){
     if (nama.value==="" || durasi.value==="" || deskripsi.value==="" || video.value==="" || tipe.value==="" || comboKesulitan.value==="" || comboInstruktur.value==="" || step.value==="" || alat.value==="" || gambar.value===""){
         alert("Terdapat salah satu kolom yang kosong !");
+    }else if(parseInt(durasi.value) <= 0){
+        alert("Durasi harus lebih dari 0");
     }
 }
 
 function validationEdit(){
     if (nama.value==="" || durasi.value==="" || deskripsi.value==="" || video.value==="" || tipe.value==="" || comboKesulitan.value==="" || comboInstruktur.value==="" || step.value==="" || alat.value===""){
         alert("Terdapat salah satu kolom yang kosong !");
+    }else if(parseInt(durasi.value) <= 0){
+        alert("Durasi harus lebih dari 0");
     }
 }
 

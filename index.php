@@ -20,7 +20,7 @@
         </div>
         <div class="header-right">
             <a href="index.php">Beranda</a>
-            <a href="latihan.php">Latihan</a>
+            
             <a href="kontak.php">Kontak</a>
             <a href="login.php">Login</a>
         </div>
@@ -78,7 +78,7 @@
             <h2 class="title-workout">Choose your workout</h2>
             <table>
                 <?php  
-                    $contents = query("SELECT nama_olahraga,image FROM olahraga");
+                    $contents = query("SELECT id_olahraga,nama_olahraga,image FROM olahraga");
 
                     if(isset($_POST["search"])){
                         // Untuk pencarian berdasarkan nama olahraga, tipe, tingkat kesulitan
@@ -111,7 +111,7 @@
                             echo '<h2><a href="konten.php?name='.$content['nama_olahraga'].'">'.$content['nama_olahraga'].'</a></h2>';
                             echo '<h3> Tipe Olahraga : <span>'.$content['tipe_olahraga'].'</span></h3>';
                             echo '<h3> Tingkat Kesulitan : <span>'.$content['tingkat_kesulitan'].'</span></h3>';
-                            echo '<p>'.$content['deskripsi'].' <a href="konten.php?name='.$content['nama_olahraga'].'">Lihat lebih lengkap...</a></p>';
+                            echo '<p>'.$content['deskripsi'].' <a href="konten.php?id='.$content['id_olahraga'].'">Lihat lebih lengkap...</a></p>';
                             echo "</div>";
                             echo "</tr>";
                         }
@@ -127,7 +127,7 @@
                             echo '<div class="wrap-image">';
                             echo '<img class="img-content" src="images/workout/'.$content['image'].'" alt='.$content['nama_olahraga'].'>';
                             echo '<div class="img-overlay">';
-                            echo '<div class="title"><a href="konten.php?name='.$content['nama_olahraga'].'"><h3>'.$content['nama_olahraga'].'</h3></a></div>';
+                            echo '<div class="title"><a href="konten.php?id='.$content['id_olahraga'].'"><h3>'.$content['nama_olahraga'].'</h3></a></div>';
                             echo "</div>";
                             echo "</div>";
                             echo "</td>";

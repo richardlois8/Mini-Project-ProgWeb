@@ -1,12 +1,11 @@
 <?php  
 require("functions.php");
 if($_GET){
-    // $allResult = query("SELECT * FROM olahraga WHERE nama_olahraga LIKE '%".$_GET['name']."%'");
     $allResult = query("SELECT nama_olahraga,video,tingkat_kesulitan,durasi,tipe_olahraga,nama_instruktur,deskripsi,step,alat FROM olahraga
     join kesulitan k on k.id_kesulitan = olahraga.id_kesulitan
     join tipe_olahraga t on t.id_tipe = olahraga.id_tipe
     join instruktur i on olahraga.id_instruktur = i.id_instruktur
-    WHERE olahraga.nama_olahraga LIKE '%".$_GET['name']."%'");
+    WHERE olahraga.id_olahraga =".$_GET['id'].";");
     $result = $allResult[0];
 }
 ?>
@@ -28,7 +27,7 @@ if($_GET){
         </div>
         <div class="header-right">
             <a href="index.php">Beranda</a>
-            <a href="latihan.php">Latihan</a>
+            
             <a href="kontak.php">Kontak</a>
             <a href="login.php">Login</a>
         </div>

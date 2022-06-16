@@ -6,7 +6,6 @@
     if(!isset($_SESSION['userLogin']) || $_SESSION['userLogin'] == ""){
         header("Location: index.php");
     }
-    $oldGambar = $_SESSION['oldImg'];
 ?>
 
 <?php 
@@ -17,6 +16,14 @@
         $hasil = mysqli_fetch_assoc($result);
         // $_FILES['gambar']['name'] = $hasil['image'];
         $_SESSION['oldImg'] = $hasil['image'];
+        $_SESSION['oldName'] = $hasil['nama_olahraga'];
+    }
+
+    // Untuk menampilkan gambar yang terpilih
+    if(isset($_SESSION['oldImg'])){
+        $oldGambar = $_SESSION['oldImg'];
+    }else{
+        $oldGambar = query("SELECT image FROM olahraga WHERE id_olahraga =".$_GET['id']."LIMIT 1")[0]['image'];
     }
 ?>
 
@@ -37,7 +44,7 @@
         </div>
         <div class="header-right">
             <a href="index.php">Beranda</a>
-            <a href="latihan.php">Latihan</a>
+            
             <a href="kontak.php">Kontak</a>
             <a href="index.php">Logout</a>
         </div>
@@ -66,15 +73,15 @@
                             <?php
                                 $query = "SELECT * FROM tipe_olahraga";
                                 $result = mysqli_query($conn,$query);
-                                $counter1 = 1;
+
+                                // Untuk menyimpan value, agar saat error value tidak hilang
                                 $newIdTipe = isset($_POST['comboTipe']) ? $_POST['comboTipe'] : $hasil["id_tipe"];
                                 while($row = mysqli_fetch_assoc($result)){
-                                    if(intval($newIdTipe) == $counter1){
+                                    if(intval($newIdTipe) == $row['id_tipe']){
                                         echo "<option selected value = '". $row['id_tipe']. "'>". $row['tipe_olahraga'] . "</option>";
                                     }else{
                                         echo "<option value = '". $row['id_tipe']. "'>". $row['tipe_olahraga']. "</option>";
                                     }
-                                    $counter1 += 1;
                                 }
                             ?>
                         </select>
@@ -90,15 +97,13 @@
                                 $query = "SELECT * FROM kesulitan";
                                 $result = mysqli_query($conn,$query);
 
-                                $counter2 = 1;
                                 $newIdKesulitan = isset($_POST['comboKesulitan']) ? $_POST['comboKesulitan'] : $hasil["id_kesulitan"];
                                 while($row = mysqli_fetch_assoc($result)){
-                                    if(intval($newIdKesulitan) == $counter2){
+                                    if(intval($newIdKesulitan) == $row['id_kesulitan']){
                                         echo "<option selected value = '". $row['id_kesulitan']. "'>". $row['tingkat_kesulitan']. "</option>";
                                     }else{
                                         echo "<option value = '". $row['id_kesulitan']. "'>". $row['tingkat_kesulitan']. "</option>";
                                     }
-                                    $counter2+=1;
                                 }
                             ?>
                         </select>
@@ -114,15 +119,13 @@
                                 $query = "SELECT * FROM instruktur";
                                 $result = mysqli_query($conn,$query);
 
-                                $counter3 = 1;
                                 $newIdInstruktur = isset($_POST['comboInstruktur']) ? $_POST['comboInstruktur'] : $hasil["id_instruktur"];
                                 while($row = mysqli_fetch_assoc($result)){
-                                    if(intval($newIdInstruktur) == $counter3){
+                                    if(intval($newIdInstruktur) == $row['id_instruktur']){
                                         echo "<option selected value = '". $row['id_instruktur']. "'>". $row['nama_instruktur']. "</option>";
                                     }else{
                                         echo "<option value = '". $row['id_instruktur']. "'>". $row['nama_instruktur']. "</option>";
                                     }
-                                    $counter3+=1;
                                 }
                             ?>
                         </select>
@@ -132,22 +135,8 @@
                 <tr>
                     <td>Peralatan</td>
                     <td>
-                        <?php
-                            // $query = "SELECT * FROM peralatan";
-                            // $result = mysqli_query($conn,$query);
-                            // $resultDetailPeralatan = mysqli_query($conn,"SELECT id_alat FROM detail_peralatan WHERE id_olahraga = ". $hasil['id_olahraga']."");
-                            // $hasilDetPer = mysqli_fetch_assoc($resultDetailPeralatan); // hasildetailperalatan
-
-                            // while($row = mysqli_fetch_assoc($result)){
-                            //     // echo "<input type='checkbox' name='comboAlat[]' value= '". $row['id_peralatan']. "'>". $row['nama_peralatan']."</input>";
-                            //     echo "<input type='checkbox' name='comboAlat[]' class='alat' value= '". $row['id_peralatan']."' ". ($hasilDetPer['id_alat'] == $row['id_peralatan'] ? 'checked' : '') .">". $row['nama_peralatan']."</input>";
-                                
-                            // }
-                            // echo "<br>";
-                            // print_r($hasilDetPer);
-                            ?>
-                            <input type="text" id="alat" name="alat" class="form-text" value="<?= isset($_POST['alat']) ? $_POST['alat'] : $hasil["alat"] ?>">
-                            <p id="lblAlat">*Pisahkan dengan koma</p>
+                        <input type="text" id="alat" name="alat" class="form-text" value="<?= isset($_POST['alat']) ? $_POST['alat'] : $hasil["alat"] ?>">
+                        <p id="lblAlat">*Pisahkan dengan koma</p>
                     </td>
                 </tr>
 
@@ -182,12 +171,11 @@
     </table>
 
 </body>
-<?php $rand = rand(0,9) ?>
-<script src="js/addEdit.js?<?= $rand ?>"></script>
+<script src="js/addEdit.js"></script>
 </html>
 
 <?php
-    if(isset($_POST["id"]) && isset($_POST['submit']) && isset($_POST['nama_olahraga']) && isset($_POST['durasi']) && isset($_POST['comboTipe']) && isset($_POST['comboKesulitan']) && isset($_POST['comboInstruktur']) && isset($_POST['alat']) && isset($_POST['deskripsi']) && isset($_POST['step']) && isset($_POST['video'])){
+    if(isset($_POST["id"]) && isset($_POST['submit']) && isset($_POST['nama_olahraga']) && $_POST['durasi'] > 0 && isset($_POST['comboTipe']) && isset($_POST['comboKesulitan']) && isset($_POST['comboInstruktur']) && isset($_POST['alat']) && isset($_POST['deskripsi']) && isset($_POST['step']) && isset($_POST['video'])){
         // update
         $id = $_POST["id"];
         $olahraga = $_POST['nama_olahraga'];
@@ -196,16 +184,29 @@
         $vid = $_POST['video'];
         $tipe = $_POST['comboTipe'];
         $kesulitan = $_POST['comboKesulitan'];
-        $newGambar = "";
         $step = $_POST['step'];
         $alat = $_POST['alat'];
         $instruktur = $_POST["comboInstruktur"];
+
+        // Menghapus gambar ketika nama berubah dan gambar diubah
+        if($_SESSION['oldName'] != $olahraga && $_FILES['gambar']['name'] != ""){
+            echo "Masuk";
+            unlink("images/workout/".$oldGambar);
+        }
+        // Ketika nama diubah tapi gambar gak diubah
+        else{
+            $ekstensi = explode(".",$_SESSION['oldImg']);
+            $newImgName = $olahraga . "." . $ekstensi[1];
+            $oldGambar = $newImgName;
+            rename("images/workout/".$_SESSION['oldImg'], "images/workout/".$newImgName);
+        }
         
         if($_FILES["gambar"]["name"] != ""){
             $ekstensi = explode(".",$_FILES["gambar"]["name"]);
-            $newGambar = $olahraga . "." . $ekstensi[1];
+            $newImgName = $olahraga . "." . $ekstensi[1];
+            $oldGambar = $newImgName;
             
-            $uploadfile = "images/workout/" . $newGambar;
+            $uploadfile = "images/workout/" . $newImgName;
             if(move_uploaded_file($_FILES["gambar"]["tmp_name"], $uploadfile)){
                 echo "Sukses mengupload foto<br>";
             }else{
@@ -223,7 +224,7 @@
             echo "<script>alert('Berhasil mengubah data');window.location.href='crud.php';</script>";
         }
         else{
-            // echo "<script>alert('Gagal mengubah data');window.location.href='crud.php';</script>";
+            echo "<script>alert('Gagal mengubah data');window.location.href='crud.php';</script>";
             echo mysqli_error($conn);
         }
         mysqli_query($conn,"SET FOREIGN_KEY_CHECKS=1;");
