@@ -208,13 +208,13 @@
             }
         }
 
-        $sql = "INSERT INTO olahraga VALUES ('','$olahraga',$durasi,'$desc','$vid',$tipe,$kesulitan,'$gambar','$step','$instruktur','$alat')";
+        $sql = "INSERT INTO olahraga (nama_olahraga,durasi,deskripsi,video,id_tipe,id_kesulitan,image,step,id_instruktur,alat) VALUES ('$olahraga',$durasi,'$desc','$vid',$tipe,$kesulitan,'$gambar','$step','$instruktur','$alat')";
 
         if(mysqli_query($conn,$sql)){
             echo "<script>window.location.href = 'crud.php'</script>";
         }else{
             echo "<script>alert('Gagal menambahkan data')</script><br>";
-            echo msqli_error($conn);
+            echo mysqli_error($conn);
         }
     }
 ?>

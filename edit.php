@@ -14,16 +14,13 @@
         $sql = "SELECT * FROM olahraga WHERE id_olahraga = '$id' LIMIT 1";
         $result = mysqli_query($conn,$sql);
         $hasil = mysqli_fetch_assoc($result);
-        // $_FILES['gambar']['name'] = $hasil['image'];
         $_SESSION['oldImg'] = $hasil['image'];
         $_SESSION['oldName'] = $hasil['nama_olahraga'];
     }
 
-    // Untuk menampilkan gambar yang terpilih
+    // Untuk menampilkan gambar yang terpilih 
     if(isset($_SESSION['oldImg'])){
         $oldGambar = $_SESSION['oldImg'];
-    }else{
-        $oldGambar = query("SELECT image FROM olahraga WHERE id_olahraga =".$_GET['id']."LIMIT 1")[0]['image'];
     }
 ?>
 
@@ -190,7 +187,6 @@
 
         // Menghapus gambar ketika nama berubah dan gambar diubah
         if($_SESSION['oldName'] != $olahraga && $_FILES['gambar']['name'] != ""){
-            echo "Masuk";
             unlink("images/workout/".$oldGambar);
         }
         // Ketika nama diubah tapi gambar gak diubah

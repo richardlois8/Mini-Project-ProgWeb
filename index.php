@@ -41,17 +41,27 @@
                         </button>
                         
                         <select name="comboTipe" id="comboTipe">
-                            <option selected hidden disabled>Tipe Olahraga</option>
-                            <option value="1">Hiit</option>
-                            <option value="2">Yoga</option>
-                            <option value="3">Cardio</option>
+                        <option selected hidden disabled>Pilih Tipe Olahraga</option>
+                            <?php
+                                $query = "SELECT * FROM tipe_olahraga ORDER BY id_tipe ASC";
+                                $result = mysqli_query($conn,$query);
+
+                                while($row = mysqli_fetch_assoc($result)){
+                                    echo "<option value = '". $row['id_tipe']. "'>". $row['tipe_olahraga']. "</option>";
+                                }
+                            ?>
                         </select>
 
                         <select name="comboKesulitan" id="comboKesulitan">
-                            <option selected hidden disabled>Tingkat Kesulitan</option>
-                            <option value="1">Beginner</option>
-                            <option value="2">Intermediate</option>
-                            <option value="3">Advance</option>
+                            <option selected hidden disabled>Pilih Tingkat Kesulitan</option>
+                                <?php
+                                    $query = "SELECT * FROM kesulitan ORDER BY id_kesulitan";
+                                    $result = mysqli_query($conn,$query);
+
+                                    while($row = mysqli_fetch_assoc($result)){
+                                        echo "<option value = '". $row['id_kesulitan']. "'>". $row['tingkat_kesulitan']. "</option>";
+                                    }
+                                ?>
                         </select>
 
                     </form>        
@@ -103,12 +113,13 @@
                         }else{
                             $contents = normalSearch($_POST["keyword"]);
                         }
-
+                        
+                        // Tampilkan hasil pencarian
                         foreach($contents as $content){
                             echo "<tr>";
                             echo '<div class="search-content">';
                             echo '<img class="img-content-search" src="images/workout/'.$content['image'].'" alt='.$content['nama_olahraga'].'>';
-                            echo '<h2><a href="konten.php?name='.$content['nama_olahraga'].'">'.$content['nama_olahraga'].'</a></h2>';
+                            echo '<h2><a href="konten.php?id='.$content['id_olahraga'].'">'.$content['nama_olahraga'].'</a></h2>';
                             echo '<h3> Tipe Olahraga : <span>'.$content['tipe_olahraga'].'</span></h3>';
                             echo '<h3> Tingkat Kesulitan : <span>'.$content['tingkat_kesulitan'].'</span></h3>';
                             echo '<p>'.$content['deskripsi'].' <a href="konten.php?id='.$content['id_olahraga'].'">Lihat lebih lengkap...</a></p>';
@@ -116,6 +127,7 @@
                             echo "</tr>";
                         }
                     }
+                    // Tampilkan semua yang ada / beranda
                     else{
                         $column = 1;
                         foreach($contents as $content){
